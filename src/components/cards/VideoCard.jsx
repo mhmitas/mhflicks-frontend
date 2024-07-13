@@ -7,7 +7,7 @@ const VideoCard = ({ video }) => {
         <div className='p-1 h-full rounded-xl group hover:cursor-pointer duration-300'>
             {/* thumbnail */}
             <figure className='mb-4 relative w-full overflow-hidden'>
-                <img className='rounded-xl group-hover:rounded-sm duration-300 group-hover:scale-[1.01]' src={thumbnail} alt="" />
+                <img className='rounded-xl group-hover:rounded-sm duration-300 group-hover:scale-[1.01] w-full' src={thumbnail} alt="" />
                 <span className='absolute right-2 bottom-2 bg-black/60 p-1 rounded-md text-sm group-hover:hidden'>{duration}</span>
             </figure>
             <div className='flex gap-3 font-semibold'>

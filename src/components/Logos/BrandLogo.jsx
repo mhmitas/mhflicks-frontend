@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const BrandLogo = () => {
     return (
-        <Link to="/" className='flex items-center'>
+        <Link to="/" className='flex items-center px-1'>
             <span className='py-[6px] px-3 text-2xl font-extrabold text-white bg-rose-600 rounded-lg'>
                 <FaPlay size={15} />
             </span>

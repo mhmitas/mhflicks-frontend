@@ -1,13 +1,13 @@
-import React from 'react';
-import SidebarV1 from '../../components/root-layout-components/sidebar/SidebarV1';
+import React, { useContext } from 'react';
 import HomeVideosSection from '../../components/root-layout-components/HomeVideosSection';
+import { SidebarContext } from '../../layouts/root';
 
 
 const Home = () => {
+    const { sidebarOpen, setSidebarOpen } = useContext(SidebarContext)
 
     return (
-        <div className='flex'>
-            <SidebarV1 />
+        <div className=''>
             <HomeVideosSection />
         </div>
     );
