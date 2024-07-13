@@ -6,7 +6,7 @@ import { AiOutlineBars } from "react-icons/ai";
 
 const NavbarV1 = () => {
     return (
-        <div className='flex items-center justify-between p-4 max-h-16 fixed inset-x-0'>
+        <div className='flex items-center justify-between p-4 max-h-16 fixed inset-x-0 bg-base-100 z-20'>
             <div className='flex items-center gap-2'>
                 <button className='btn btn-ghost btn-circle'><AiOutlineBars size={25} /></button>
                 <BrandLogo />

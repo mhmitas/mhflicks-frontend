@@ -1,0 +1,137 @@
+[
+    {
+        "videoFile": "video1.mp4",
+        "thumbnail": "https://img.youtube.com/vi/ScMzIvxBSi4/0.jpg",
+        "title": "The Beauty of Nature",
+        "description": "A breathtaking journey through the world's most beautiful landscapes.",
+        "duration": "10:05",
+        "views": 1050000,
+        "creator": "NatureLover"
+    },
+    {
+        "videoFile": "video2.mp4",
+        "thumbnail": "https://img.youtube.com/vi/5qap5aO4i9A/0.jpg",
+        "title": "Relaxing Jazz Music",
+        "description": "Relax and enjoy some smooth jazz music.",
+        "duration": "2:15:30",
+        "views": 305000,
+        "creator": "SmoothJazz"
+    },
+    {
+        "videoFile": "video3.mp4",
+        "thumbnail": "https://img.youtube.com/vi/3JZ_D3ELwOQ/0.jpg",
+        "title": "Epic Space Documentary",
+        "description": "Explore the vastness of space in this epic documentary.",
+        "duration": "1:45:20",
+        "views": 2000000,
+        "creator": "SpaceExplorers"
+    },
+    {
+        "videoFile": "video4.mp4",
+        "thumbnail": "https://img.youtube.com/vi/ktvTqknDobU/0.jpg",
+        "title": "Cooking with Chef John",
+        "description": "Learn to cook delicious meals with Chef John.",
+        "duration": "15:35",
+        "views": 150000,
+        "creator": "ChefJohn"
+    },
+    {
+        "videoFile": "video5.mp4",
+        "thumbnail": "https://img.youtube.com/vi/oUFJJNQGwhk/0.jpg",
+        "title": "Ultimate Workout Routine",
+        "description": "Get in shape with this ultimate workout routine.",
+        "duration": "30:00",
+        "views": 500000,
+        "creator": "FitnessGuru"
+    },
+    {
+        "videoFile": "video6.mp4",
+        "thumbnail": "https://img.youtube.com/vi/6ZfuNTqbHE8/0.jpg",
+        "title": "Marvel Movie Trailer",
+        "description": "Watch the latest trailer for the upcoming Marvel movie.",
+        "duration": "2:30",
+        "views": 4500000,
+        "creator": "MarvelStudios"
+    },
+    {
+        "videoFile": "video7.mp4",
+        "thumbnail": "https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg",
+        "title": "Travel Vlog: Japan",
+        "description": "Join us on our adventure through Japan.",
+        "duration": "20:10",
+        "views": 800000,
+        "creator": "TravelWithUs"
+    },
+    {
+        "videoFile": "video8.mp4",
+        "thumbnail": "https://img.youtube.com/vi/_nBlN9yp9R8/0.jpg",
+        "title": "Tech Reviews: Latest Gadgets",
+        "description": "Get the latest reviews on the newest gadgets.",
+        "duration": "12:45",
+        "views": 650000,
+        "creator": "TechGuru"
+    },
+    {
+        "videoFile": "video9.mp4",
+        "thumbnail": "https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg",
+        "title": "Music Video: Hit Song",
+        "description": "Check out the official music video for the latest hit song.",
+        "duration": "3:50",
+        "views": 9000000,
+        "creator": "HitMusic"
+    },
+    {
+        "videoFile": "video10.mp4",
+        "thumbnail": "https://img.youtube.com/vi/L_jWHffIx5E/0.jpg",
+        "title": "DIY Home Improvement",
+        "description": "Learn how to improve your home with these DIY tips.",
+        "duration": "25:15",
+        "views": 300000,
+        "creator": "HomeImprovement"
+    },
+    {
+        "videoFile": "video11.mp4",
+        "thumbnail": "https://img.youtube.com/vi/s6zR2T9vn2c/0.jpg",
+        "title": "Gaming Highlights",
+        "description": "Watch the best gaming highlights from this week.",
+        "duration": "8:20",
+        "views": 700000,
+        "creator": "GamerPro"
+    },
+    {
+        "videoFile": "video12.mp4",
+        "thumbnail": "https://img.youtube.com/vi/9bZkp7q19f0/0.jpg",
+        "title": "Funny Cat Videos",
+        "description": "Laugh out loud with these hilarious cat videos.",
+        "duration": "5:15",
+        "views": 1200000,
+        "creator": "CatLover"
+    },
+    {
+        "videoFile": "video13.mp4",
+        "thumbnail": "https://img.youtube.com/vi/2Vv-BfVoq4g/0.jpg",
+        "title": "Live Concert: Famous Band",
+        "description": "Experience the live concert of your favorite band.",
+        "duration": "1:20:45",
+        "views": 2500000,
+        "creator": "LiveMusic"
+    },
+    {
+        "videoFile": "video14.mp4",
+        "thumbnail": "https://img.youtube.com/vi/60ItHLz5WEA/0.jpg",
+        "title": "Yoga for Beginners",
+        "description": "Start your yoga journey with these beginner poses.",
+        "duration": "35:00",
+        "views": 400000,
+        "creator": "YogaWithMe"
+    },
+    {
+        "videoFile": "video15.mp4",
+        "thumbnail": "https://img.youtube.com/vi/CevxZvSJLk8/0.jpg",
+        "title": "History Documentary",
+        "description": "Learn about the significant events in history with this documentary.",
+        "duration": "50:30",
+        "views": 950000,
+        "creator": "HistoryChannel"
+    }
+]
