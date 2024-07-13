@@ -2,7 +2,7 @@ import React from 'react';
 import { viewsFormat } from '../../utils/viewsFormat';
 
 const VideoCard = ({ video }) => {
-    const { creator, description, duration, thumbnail, title, videoFile, views } = video
+    const { creator, duration, thumbnail, title, views } = video;
     return (
         <div className='p-1 h-full rounded-xl group hover:cursor-pointer duration-300'>
             {/* thumbnail */}
