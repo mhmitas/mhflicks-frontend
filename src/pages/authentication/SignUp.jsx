@@ -65,7 +65,7 @@ const SignUp = () => {
                             {errors.password && <span className="text-error">{errors.password.message}</span>}
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-info">Sign Up</button>
+                            <button type="submit" className="btn btn-info text-lg">Sign Up</button>
                         </div>
                     </form>
                     <p className='my-1'>Already have an account? Please <Link to="/sign-in" className='link link-info'>Sign up</Link> </p>
