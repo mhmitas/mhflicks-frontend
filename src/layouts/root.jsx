@@ -1,15 +1,24 @@
-import React from 'react';
-import NavbarV1 from '../components/root-layout-components/navbar/NavbarV1';
+import React, { createContext, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import NavbarV2 from '../components/shared/navbar/NavbarV2';
+
+export const SidebarContext = createContext(null)
 
 const Root = () => {
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+    const value = {
+        sidebarOpen,
+        setSidebarOpen
+    }
     return (
-        <div>
-            <NavbarV1 />
-            <div className='pt-16'>
-                <Outlet />
+        <SidebarContext.Provider value={value}>
+            <div>
+                <NavbarV2 sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+                <div className='pt-16'>
+                    <Outlet />
+                </div>
             </div>
-        </div>
+        </SidebarContext.Provider>
     );
 };
 
