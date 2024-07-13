@@ -1,7 +1,7 @@
 [
     {
         "videoFile": "video1.mp4",
-        "thumbnail": "https://img.youtube.com/vi/ScMzIvxBSi4/0.jpg",
+        "thumbnail": "https://i.ytimg.com/vi/es4x5R-rV9s/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDE3HP-LWUfwXnV_EbJG3WbK6Tv8w",
         "title": "The Beauty of Nature",
         "description": "A breathtaking journey through the world's most beautiful landscapes.",
         "duration": "10:05",
@@ -10,7 +10,7 @@
     },
     {
         "videoFile": "video2.mp4",
-        "thumbnail": "https://img.youtube.com/vi/5qap5aO4i9A/0.jpg",
+        "thumbnail": "https://i.ytimg.com/vi/IUN664s7N-c/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCadb-9Bf_GCffK-a8JlccoyxTb7g",
         "title": "Relaxing Jazz Music",
         "description": "Relax and enjoy some smooth jazz music.",
         "duration": "2:15:30",
@@ -19,12 +19,21 @@
     },
     {
         "videoFile": "video3.mp4",
-        "thumbnail": "https://img.youtube.com/vi/3JZ_D3ELwOQ/0.jpg",
+        "thumbnail": "https://i.ytimg.com/vi/Y4id5tlTYsY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLASTL8hsnAdrOKFGteXgvsflZ1ejQ",
         "title": "Epic Space Documentary",
         "description": "Explore the vastness of space in this epic documentary.",
         "duration": "1:45:20",
         "views": 2000000,
         "creator": "SpaceExplorers"
+    },
+    {
+        "videoFile": "video3.mp4",
+        "thumbnail": "https://i.ytimg.com/vi/3ouqT3lfiUE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLByrJa96e7NwqW8heTW9l1KS6N0yQ",
+        "title": "Build in public and open source | Only video that you need 🔥",
+        "description": "Explore the vastness of space in this epic documentary.",
+        "duration": "1:45:20",
+        "views": 2500000,
+        "creator": "Chai aur Code"
     },
     {
         "videoFile": "video4.mp4",
