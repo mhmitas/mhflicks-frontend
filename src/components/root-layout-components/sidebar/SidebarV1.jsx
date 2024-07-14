@@ -1,10 +1,12 @@
 // Sidebar.js
 import { Tooltip } from '@mui/material';
-import React, { useContext } from 'react';
-import { AiFillHome, AiOutlineCompass, AiOutlinePlayCircle, AiOutlineHeart, AiOutlineHistory } from 'react-icons/ai';
+import React from 'react';
+import { AiFillHome, AiOutlineCompass, AiOutlinePlayCircle, AiOutlineHistory, AiOutlineLike } from 'react-icons/ai';
+import { MdPlaylistPlay } from "react-icons/md";
+import { CiUser } from "react-icons/ci";
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = ({ setSidebarOpen, sidebarOpen }) => {
+const Sidebar = ({ sidebarOpen }) => {
 
     return (
         <div
@@ -12,6 +14,12 @@ const Sidebar = ({ setSidebarOpen, sidebarOpen }) => {
         >
             <ul className="menu text-base-content min-h-full px-4 py-4 md:px-0 lg:px-4 space-y-2">
                 {sidebarMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
+
+                <div className='divider'></div>
+
+                {sidebarUserMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
+
+
             </ul>
         </div>
     );
@@ -23,15 +31,14 @@ export default Sidebar;
 function SidebarMenuItem({ name, path, Icon }) {
     return (
         <li className='md:p-1 lg:p-0'>
-            <NavLink to={path} className="text-base flex md:items-center lg:items-stretch gap-2 w-full lg:mx-0 p-2">
-                <Tooltip title={<span className='text-sm'>{name}</span>}>
+            <Tooltip title={<span className='text-sm'>{name}</span>} placement='right'>
+                <NavLink to={path} className="text-base flex md:items-center lg:items-stretch gap-2 w-full lg:mx-0 p-2">
                     <span className="md:mx-auto lg:mx-0">
                         <Icon size={25} />
                     </span>
-                </Tooltip>
-
-                <span className='md:hidden lg:inline-block'>{name}</span>
-            </NavLink>
+                    <span className='md:hidden lg:inline-block'>{name}</span>
+                </NavLink>
+            </Tooltip>
         </li>
     )
 }
@@ -41,6 +48,11 @@ const sidebarMenuItems = [
     { name: "Home", path: "/", icon: AiFillHome },
     { name: "Explore", path: "/explore", icon: AiOutlineCompass },
     { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle },
-    { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineHeart },
+]
+
+const sidebarUserMenuItems = [
+    { name: "You", path: "/user-profile", icon: CiUser },
     { name: "History", path: "/history", icon: AiOutlineHistory },
+    { name: "Playlist", path: "/playlist", icon: MdPlaylistPlay },
+    { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike },
 ]
