@@ -9,3 +9,14 @@
 .my-container {
     @apply px-4 md:px-6 my-4
 }
+
+
+.slider-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.slider-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Safari and Chrome */
+}

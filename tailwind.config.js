@@ -12,7 +12,7 @@ export default {
       {
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
-          "primary": "#e11d48",
+          "primary": "#f43f5e",
           "primary-focus": "#8462f4",
           "primary-content": "#ffffff",
           "secondary": "#fff",
@@ -46,3 +46,6 @@ export default {
   },
   plugins: [require("daisyui")],
 }
+
+
+// previous primary color #e11d48

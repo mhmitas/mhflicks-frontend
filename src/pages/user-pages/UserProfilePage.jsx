@@ -1,35 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import UserProfileHeader from '../../components/signed-in-user/UserProfilePageHeader';
+import axios from 'axios';
+import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
 
 const UserProfilePage = () => {
+    const [videos, setVideos] = useState([])
+
+    useEffect(() => {
+        axios("/videos.json")
+            .then(res => {
+                setVideos(res.data)
+            })
+    }, [])
+
     return (
-        <section className='my-container'>
+        <section className='my-container *:mb-10'>
             <UserProfileHeader />
-            <div className='max-w-full flex'>
-                <div className='flex overflow-x-auto'>
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                    <Hello />
-                </div>
-            </div>
+            <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
+            <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
         </section>
     );
 };
 
 export default UserProfilePage;
 
-function Hello() {
-    return (
-        <div>
-            <div className='w-72 h-52 border m-1'>
-                lorem200
-            </div>
-        </div>
-    )
-}
