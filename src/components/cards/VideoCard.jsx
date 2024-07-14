@@ -4,10 +4,10 @@ import { viewsFormat } from '../../utils/viewsFormat';
 const VideoCard = ({ video }) => {
     const { creator, duration, thumbnail, title, views } = video;
     return (
-        <div className='p-1 h-full rounded-xl group hover:cursor-pointer duration-500'>
+        <div className='p-1 h-full rounded-lg sm:rounded-xl group hover:cursor-pointer duration-500'>
             {/* thumbnail */}
-            <figure className='mb-4 relative w-full overflow-hidden aspect-video flex items-center rounded-xl group-hover:rounded-sm duration-500'>
-                <img className='rounded-xl group-hover:rounded-sm duration-500 group-hover:scale-[1.01] w-full' src={thumbnail} alt="" />
+            <figure className='mb-4 relative w-full overflow-hidden aspect-video flex items-center rounded-lg sm:rounded-xl group-hover:rounded-sm duration-500'>
+                <img className='rounded-lg sm:rounded-xl group-hover:rounded-sm duration-500 group-hover:scale-[1.01] w-full' src={thumbnail} alt="" />
 
                 <span className='absolute right-2 bottom-2 bg-black/60 p-1 rounded-md text-sm group-hover:hidden'>{duration}</span>
             </figure>
