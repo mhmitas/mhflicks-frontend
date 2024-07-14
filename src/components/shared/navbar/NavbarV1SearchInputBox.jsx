@@ -12,7 +12,7 @@ const NavbarV1SearchInputBox = () => {
                     className="input input-bordered border-r-0 rounded-l-full input-sm py-5 px-6 border border-[#3f4555] text-base flex-1" />
                 <button title='Search' className="bg-neutral rounded-r-full px-6 tooltip tooltip-bottom border border-[#3f4555]" data-tip='Search'><FaSearch size={17} /></button>
             </div>
-            <button className='btn btn-circle btn-ghost md:hidden'><FaSearch size={17} /></button>
+            <button className='btn btn-sm md:btn-md btn-circle btn-ghost md:hidden'><FaSearch size={17} /></button>
         </div>
     );
 };

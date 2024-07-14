@@ -53,6 +53,6 @@ const sidebarMenuItems = [
 const sidebarUserMenuItems = [
     { name: "You", path: "/user-profile", icon: CiUser },
     { name: "History", path: "/history", icon: AiOutlineHistory },
-    { name: "Playlist", path: "/playlist", icon: MdPlaylistPlay },
+    { name: "Playlist", path: "/playlists", icon: MdPlaylistPlay },
     { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike },
 ]
