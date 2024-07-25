@@ -17,13 +17,13 @@ const UserVideosSlider = ({ title, videos, containerId }) => {
                 <>
                     <button
                         onClick={() => scrollLeft(containerId)}
-                        className='btn btn-neutral btn-circle rounded-full absolute left-2 top-1/2'
+                        className='btn btn-sm sm:btn-md btn-neutral btn-circle rounded-full absolute left-2 top-1/2'
                     >
                         <GoChevronLeft size={25} />
                     </button>
                     <button
                         onClick={() => scrollRight(containerId)}
-                        className='btn btn-neutral btn-circle rounded-full absolute right-2 top-1/2'
+                        className='btn btn-sm sm:btn-md btn-neutral btn-circle rounded-full absolute right-2 top-1/2'
                     >
                         <GoChevronRight size={25} />
                     </button>

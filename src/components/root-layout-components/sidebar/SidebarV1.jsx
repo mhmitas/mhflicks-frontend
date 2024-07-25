@@ -1,9 +1,8 @@
 // Sidebar.js
 import { Tooltip } from '@mui/material';
 import React from 'react';
-import { AiFillHome, AiOutlineCompass, AiOutlinePlayCircle, AiOutlineHistory, AiOutlineLike } from 'react-icons/ai';
+import { AiOutlineCompass, AiOutlinePlayCircle, AiOutlineHistory, AiOutlineLike, AiOutlineUser, AiOutlineHome } from 'react-icons/ai';
 import { MdPlaylistPlay } from "react-icons/md";
-import { CiUser } from "react-icons/ci";
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen }) => {
@@ -18,8 +17,6 @@ const Sidebar = ({ sidebarOpen }) => {
                 <div className='divider'></div>
 
                 {sidebarUserMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
-
-
             </ul>
         </div>
     );
@@ -45,13 +42,13 @@ function SidebarMenuItem({ name, path, Icon }) {
 
 
 const sidebarMenuItems = [
-    { name: "Home", path: "/", icon: AiFillHome },
+    { name: "Home", path: "/", icon: AiOutlineHome },
     { name: "Explore", path: "/explore", icon: AiOutlineCompass },
     { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle },
 ]
 
 const sidebarUserMenuItems = [
-    { name: "You", path: "/user-profile", icon: CiUser },
+    { name: "You", path: "/user-profile", icon: AiOutlineUser },
     { name: "History", path: "/history", icon: AiOutlineHistory },
     { name: "Playlist", path: "/playlists", icon: MdPlaylistPlay },
     { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike },

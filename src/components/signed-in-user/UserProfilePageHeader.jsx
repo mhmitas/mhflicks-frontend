@@ -5,7 +5,7 @@ const UserProfileHeader = () => {
         <div className='p-6 border rounded-md border-base-200'>
             <div className='flex flex-col sm:flex-row gap-4 items-center'>
                 <figure className='w-36 h-3w-36'>
-                    <img className='w-full rounded-full' src="https://res.cloudinary.com/dquqygs9h/image/upload/c_crop,g_auto,h_800,w_800/qp3swzpehwjytppdqu9h.jpg" alt="" />
+                    <img className='w-full rounded-full' src="/mahimbabu.jpg" alt="" />
                 </figure>
                 <div className='flex flex-col items-center sm:items-start'>
                     <h1 className='text-4xl font-semibold mb-1'>Mahim Babu</h1>
@@ -23,3 +23,5 @@ const UserProfileHeader = () => {
 };
 
 export default UserProfileHeader;
+
+// https://res.cloudinary.com/dquqygs9h/image/upload/v1720966362/irrgqxga2vryx1gcff78.jpg
