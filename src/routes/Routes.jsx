@@ -7,6 +7,7 @@ import UserProfilePage from "../pages/user-pages/UserProfilePage";
 import WatchHistory from "../pages/user-pages/WatchHistory";
 import LikedVideoPage from "../pages/user-pages/LikedVideoPage";
 import SavedPlaylistsPage from "../pages/user-pages/SavedPlaylistsPage";
+import PrivetRoute from "./PrivetRoute";
 
 
 export const router = createBrowserRouter([
@@ -20,7 +21,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/user-profile",
-                element: <UserProfilePage />
+                element: <PrivetRoute>
+                    <UserProfilePage />
+                </PrivetRoute>
             },
             {
                 path: "/history",

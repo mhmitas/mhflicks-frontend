@@ -16,6 +16,7 @@ const Sidebar = ({ sidebarOpen }) => {
 
                 <div className='divider'></div>
 
+                {/* Ekhane ektu jhol ache */}
                 {sidebarUserMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
             </ul>
         </div>

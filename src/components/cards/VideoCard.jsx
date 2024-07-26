@@ -13,7 +13,7 @@ const VideoCard = ({ video }) => {
             </figure>
             <div className='flex gap-3 font-semibold'>
                 {/* channel logo */}
-                <figure><img className='rounded-full w-10' src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" /></figure>
+                <figure><img className='rounded-full w-10' src="/default-avatar.jpg" alt="" /></figure>
                 <div className='*:leading-6'>
                     <h1 className='text-lg mb-1 line-clamp-2'>{title}</h1>
                     <h1 className='text-gray-300'>{creator}</h1>

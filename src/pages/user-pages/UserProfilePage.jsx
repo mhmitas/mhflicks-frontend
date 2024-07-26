@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import UserProfileHeader from '../../components/signed-in-user/UserProfilePageHeader';
 import axios from 'axios';
 import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
+import useAuth from '../../hooks/useAuth';
 
 const UserProfilePage = () => {
     const [videos, setVideos] = useState([])
+    const { user, loading, setUser } = useAuth()
 
     useEffect(() => {
         axios("/videos.json")

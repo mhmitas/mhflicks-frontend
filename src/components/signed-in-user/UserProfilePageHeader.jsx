@@ -1,14 +1,17 @@
 import React from 'react';
+import useAuth from '../../hooks/useAuth';
 
 const UserProfileHeader = () => {
+    const { user, loading, setUser } = useAuth()
+
     return (
         <div className='p-6 border rounded-md border-base-200'>
             <div className='flex flex-col sm:flex-row gap-4 items-center'>
                 <figure className='w-36 h-3w-36'>
-                    <img className='w-full rounded-full' src="/mahimbabu.jpg" alt="" />
+                    <img className='w-full rounded-full' src={user?.avatar} alt="" />
                 </figure>
                 <div className='flex flex-col items-center sm:items-start'>
-                    <h1 className='text-4xl font-semibold mb-1'>Mahim Babu</h1>
+                    <h1 className='text-4xl font-semibold mb-1'>{user?.fullName}</h1>
                     <div className='flex flex-wrap items-center justify-center gap-2 text-lg text-gray-200'>
                         <span>@mahimbabu</span>
                         <span className=''>•</span>

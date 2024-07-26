@@ -38,7 +38,7 @@ export default {
           "warning-content": "#ffffff",
           "base-100": "#0f172a",
           "base-200": "#1e293b",
-          // "base-300": "#ebebeb",
+          "base-300": "#ebebeb",
           "base-content": "#ffffff",
         },
       }

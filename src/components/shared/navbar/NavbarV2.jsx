@@ -3,8 +3,11 @@ import BrandLogo from '../../Logos/BrandLogo';
 import NavbarV1SearchInputBox from './NavbarV1SearchInputBox';
 import SignedInUserNavbarSection from '../../signed-in-user/SignedInUserNavbarSection';
 import { AiOutlineBars } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const NavbarV2 = ({ sidebarOpen, setSidebarOpen }) => {
+    const { user, loading } = useAuth()
 
     return (
         <div className='flex items-center justify-between p-4 max-h-16 fixed inset-x-0 bg-base-100 z-20'>
@@ -22,9 +25,10 @@ const NavbarV2 = ({ sidebarOpen, setSidebarOpen }) => {
                     <div className='block md:hidden'>
                         <NavbarV1SearchInputBox />
                     </div>
-                    <SignedInUserNavbarSection />
+                    {!loading && user && <SignedInUserNavbarSection />}
                 </div>
-                {/* <Link to="/sign-in"><button className='btn btn-info btn-outline btn-sm'>Sign In</button></Link> */}
+                {loading && "Loading..."}
+                {!loading && !user && <Link to="/sign-in"><button className='btn btn-info btn-outline btn-sm'>Sign In</button></Link>}
             </div>
         </div>
     );
