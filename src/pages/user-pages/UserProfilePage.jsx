@@ -3,6 +3,7 @@ import UserProfileHeader from '../../components/signed-in-user/UserProfilePageHe
 import axios from 'axios';
 import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
 import useAuth from '../../hooks/useAuth';
+import UploadVideoSection from '../../components/signed-in-user/UploadVideoSection';
 
 const UserProfilePage = () => {
     const [videos, setVideos] = useState([])
@@ -18,6 +19,7 @@ const UserProfilePage = () => {
     return (
         <section className='my-container *:mb-10'>
             <UserProfileHeader />
+            <UploadVideoSection />
             <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
             <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
         </section>

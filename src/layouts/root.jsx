@@ -17,7 +17,7 @@ const Root = () => {
                 <NavbarV2 sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <div className='pt-16 flex'>
                     <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-                    <div className="md:ml-16 lg:ml-64 duration-200 flex-1">
+                    <div className="md:ml-20 lg:ml-64 duration-200 flex-1">
                         <Outlet />
                     </div>
                 </div>

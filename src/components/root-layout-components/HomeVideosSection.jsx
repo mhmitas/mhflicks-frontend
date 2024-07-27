@@ -2,17 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import VideoCard from "../cards/VideoCard"
 import Container from '../container/Container';
+import { useQuery } from '@tanstack/react-query';
+import { axiosInstance } from '../../hooks/useAxios';
 
 const HomeVideosSection = () => {
-    const [videos, setVideos] = useState([])
 
-    useEffect(() => {
-        axios("/videos.json")
-            .then(res => {
-                setVideos(res.data)
-                // console.log(res.data);
-            })
-    }, [])
+    const { data: videos = [], isLoading, refetch, error } = useQuery({
+        queryKey: ["all-videos"],
+        queryFn: async () => {
+            const { data } = await axiosInstance("/videos/get-videos")
+            // console.log(data.data);
+            return data.data
+        }
+    })
 
     return (
         <Container>

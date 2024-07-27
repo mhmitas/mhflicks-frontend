@@ -14,7 +14,7 @@ const PrivetRoute = ({ children }) => {
         return children
     }
 
-    return <Navigate to="/" replace />
+    return <Navigate to="/sign-in" replace />
 };
 
 export default PrivetRoute;

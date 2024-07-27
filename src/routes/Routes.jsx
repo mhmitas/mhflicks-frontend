@@ -8,6 +8,8 @@ import WatchHistory from "../pages/user-pages/WatchHistory";
 import LikedVideoPage from "../pages/user-pages/LikedVideoPage";
 import SavedPlaylistsPage from "../pages/user-pages/SavedPlaylistsPage";
 import PrivetRoute from "./PrivetRoute";
+import VideoPlayer from "../pages/VideoPlayer";
+import VideoPlayerTest from "../pages/VideoPlayerTest";
 
 
 export const router = createBrowserRouter([
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
             {
                 path: "/playlists",
                 element: <SavedPlaylistsPage />
+            },
+            // {
+            //     path: "/play-video/:id",
+            //     element: <VideoPlayer />
+            // },
+            {
+                path: "/play-video/:id",
+                element: <VideoPlayerTest />
             },
         ]
     },

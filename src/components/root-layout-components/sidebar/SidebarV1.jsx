@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarOpen }) => {
 
     return (
         <div
-            className={`fixed ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} bg-base-100 duration-200 md:translate-x-0 overflow-y-auto z-20 h-[calc(100vh-64px)] w-64 md:w-16 lg:w-64`}
+            className={`fixed ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} bg-base-100 duration-200 md:translate-x-0 overflow-y-auto z-20 h-[calc(100vh-64px)] w-64 md:w-20 lg:w-64`}
         >
             <ul className="menu text-base-content min-h-full px-4 py-4 md:px-0 lg:px-4 space-y-2">
                 {sidebarMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
