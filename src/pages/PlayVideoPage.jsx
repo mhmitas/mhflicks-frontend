@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../hooks/useAxios';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import CommentsSection from '../components/VideoCommentBox';
+import moment from 'moment';
 
 const PlayVideoPage = () => {
     const { id } = useParams();
@@ -18,6 +19,8 @@ const PlayVideoPage = () => {
             return data.data
         }
     })
+
+    const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
 
     if (isLoading) {
         return <div className="my-container flex w-full flex-col gap-4">
@@ -36,7 +39,6 @@ const PlayVideoPage = () => {
     if (error) {
         console.error(error);
     }
-
 
     return (
         <section className="my-container max-w-4xl mx-auto pt-3 pb-10">
@@ -65,6 +67,7 @@ const PlayVideoPage = () => {
                     </div>
                 </div>
                 <div className='bg-base-200 p-3 rounded-lg'>
+                    <p className='font-semibold'>{uploaded}</p>
                     <h1 className=''>{video?.description}</h1>
                 </div>
             </div>

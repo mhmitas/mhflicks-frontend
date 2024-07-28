@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const VideoCard = ({ video }) => {
     const { creator, duration, thumbnail, title, views, likes } = video;
 
-    // console.log(video);
+    const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
 
     return (
         <Link to={`/play-video/${video?._id}`}>
@@ -28,9 +28,7 @@ const VideoCard = ({ video }) => {
                             {/* <h3>{viewsFormat(views)} Views</h3> */}
                             <h3 className='flex items-center gap-1'>{likes}<AiFillLike className='text-warning' /></h3>
                             •
-                            <h3>{
-                                moment(video?.createdAt, "YYYYMMDD").fromNow()
-                            }</h3>
+                            <h3>{uploaded}</h3>
                         </div>
                     </div>
                 </div>
