@@ -9,16 +9,18 @@ const Sidebar = ({ sidebarOpen }) => {
 
     return (
         <div
-            className={`fixed ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} bg-base-100 duration-200 md:translate-x-0 overflow-y-auto z-20 h-[calc(100vh-64px)] w-64 md:w-20 lg:w-64`}
+            className={`fixed ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} bg-base-100 md:translate-x-0 z-20 h-[calc(100vh-64px)] w-64 md:w-20 lg:w-64 duration-200`}
         >
-            <ul className="menu text-base-content min-h-full px-4 py-4 md:px-0 lg:px-4 space-y-2">
-                {sidebarMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
+            <div className='h-full overflow-y-auto'>
+                <ul className="menu text-base-content min-h-full px-4 py-4 md:px-0 lg:px-4 space-y-2">
+                    {sidebarMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
 
-                <div className='divider'></div>
+                    <div className='divider'></div>
 
-                {/* Ekhane ektu jhol ache */}
-                {sidebarUserMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
-            </ul>
+                    {/* Ekhane ektu jhol ache */}
+                    {sidebarUserMenuItems.map(item => <SidebarMenuItem name={item.name} path={item.path} Icon={item.icon} key={item.path} />)}
+                </ul>
+            </div>
         </div>
     );
 };
