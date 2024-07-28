@@ -42,7 +42,7 @@ const UserProfileHeader = () => {
                     </div>
                 </div>
                 <Tooltip arrow title={<span className='text-base'>Update Profile</span>}>
-                    <button onClick={() => setShowUpdateProfileModal(true)} className='btn btn-neutral absolute bottom-2 right-2'><FaEdit size={20} /></button>
+                    <button onClick={() => setShowUpdateProfileModal(true)} className='btn btn-xs btn-neutral absolute bottom-2 right-2'><FaEdit /></button>
                 </Tooltip>
             </div>
             {showUpdateProfileModal && <UpdateProfileModal user={user} setShowModal={setShowUpdateProfileModal} refetch={refetch} />}

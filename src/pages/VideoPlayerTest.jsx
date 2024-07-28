@@ -25,6 +25,7 @@ export const VideoPlayerTest = () => {
     const playerRef = useRef(null)
     const videoPlayerOptions = {
         controls: true,
+        autoplay: true,
         responsive: true,
         fluid: true,
         sources: [{

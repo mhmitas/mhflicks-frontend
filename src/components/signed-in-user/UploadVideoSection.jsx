@@ -6,6 +6,7 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import CloseModalButton from '../common/CloseModalButton';
 import toast from 'react-hot-toast';
 import { axiosInstance } from '../../hooks/useAxios';
+import { GoUpload } from 'react-icons/go';
 
 const UploadVideoSection = () => {
     const { register, handleSubmit } = useForm();
@@ -60,18 +61,18 @@ const UploadVideoSection = () => {
 
     return (
         <div>
-            <div>
-                <button onClick={() => setShowModal(true)} className='btn btn-neutral'>Upload Video <FaVideo size={25} /></button>
+            <div className='bg-secondary p-8 rounded-lg flex items-center justify-center'>
+                <button onClick={() => setShowModal(true)} className='btn btn-neutral text-lg'> <GoUpload size={25} />Upload Video</button>
             </div>
             {showModal &&
                 <section className='modal modal-open'>
-                    <form onSubmit={handleSubmit(onSubmit)} className='modal-box relative'>
+                    <form onSubmit={handleSubmit(onSubmit)} className='modal-box relative max-w-2xl'>
                         <div className='form-control'>
-                            <label className='label label-text'>Video Title</label>
+                            <label className='label label-text'>Title</label>
                             <textarea {...register("title")} type="text" className='textarea textarea-bordered' />
                         </div>
                         <div className='form-control'>
-                            <label className='label label-text'>Video Description</label>
+                            <label className='label label-text'>Description</label>
                             <textarea {...register("description")} type="text"
                                 rows={3} className='textarea textarea-bordered' />
                         </div>

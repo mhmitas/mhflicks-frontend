@@ -4,6 +4,7 @@ import axios from 'axios';
 import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
 import useAuth from '../../hooks/useAuth';
 import UploadVideoSection from '../../components/signed-in-user/UploadVideoSection';
+import { FaEdit } from 'react-icons/fa';
 
 const UserProfilePage = () => {
     const [videos, setVideos] = useState([])
@@ -19,7 +20,12 @@ const UserProfilePage = () => {
     return (
         <section className='my-container *:mb-10'>
             <UserProfileHeader />
-            <UploadVideoSection />
+            <div className='grid grid-cols-2 gap-4'>
+                <UploadVideoSection />
+                <div className='bg-secondary p-8 flex items-center justify-center rounded-lg'>
+                    <button onClick={() => setShowModal(true)} className='btn btn-neutral text-lg'> <FaEdit size={20} />Create Post</button>
+                </div>
+            </div>
             <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
             <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
         </section>
