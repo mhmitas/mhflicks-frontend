@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import Player from "../components/Player";
+import Player from "./Player";
 
 export const VideoPlayer = ({ videoUrl }) => {
     // video player configurations

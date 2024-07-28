@@ -1,11 +1,11 @@
 import React from 'react';
-import VideoPlayer from './VideoPlayer';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../hooks/useAxios';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import CommentsSection from '../components/VideoCommentBox';
 import moment from 'moment';
+import VideoPlayer from '../components/video/VideoPlayer';
 
 const PlayVideoPage = () => {
     const { id } = useParams();
