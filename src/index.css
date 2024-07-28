@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.hello {
-    color: #f5f5f5;
+.text-color-gray {
+    @apply text-gray-400
 }
 
 .my-container {

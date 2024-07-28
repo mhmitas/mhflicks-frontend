@@ -33,7 +33,7 @@ export default {
           "error": "#ff0000",
           "error-focus": "#ff0000",
           "error-content": "#ffffff",
-          "warning": "#ff9900",
+          "warning": "#ffbe00",
           "warning-focus": "#e67e00",
           "warning-content": "#ffffff",
           "base-100": "#0f172a",

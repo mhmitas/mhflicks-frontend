@@ -7,8 +7,7 @@ import { axiosInstance } from "../hooks/useAxios";
 import LoadingSpinner from "../components/common/LoadingSpinner";
 import Player from "../components/Player";
 
-export const VideoPlayerTest = () => {
-    const { id } = useParams();
+export const VideoPlayerTest = ({ id }) => {
     // fetch video data
     const { data: video = {}, isLoading, error } = useQuery({
         queryKey: [id],
