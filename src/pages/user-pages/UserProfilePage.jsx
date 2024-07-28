@@ -4,7 +4,8 @@ import axios from 'axios';
 import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
 import useAuth from '../../hooks/useAuth';
 import UploadVideoSection from '../../components/signed-in-user/UploadVideoSection';
-import { FaEdit } from 'react-icons/fa';
+import UploadPostSection from '../../components/signed-in-user/UploadPostSection';
+import UserProfilePageContentTab from '../../components/tabs/UserProfilePageContentTab';
 
 const UserProfilePage = () => {
     const [videos, setVideos] = useState([])
@@ -22,12 +23,16 @@ const UserProfilePage = () => {
             <UserProfileHeader />
             <div className='grid grid-cols-2 gap-4'>
                 <UploadVideoSection />
-                <div className='bg-base-200 p-8 flex items-center justify-center rounded-lg'>
-                    <button className='btn btn-secondary text-base'> <FaEdit size={20} />Create Post</button>
-                </div>
+                <UploadPostSection />
             </div>
-            <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
-            <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
+            <div>
+                <UserProfilePageContentTab />
+            </div>
+            {/* slides */}
+            <>
+                <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
+                <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
+            </>
         </section>
     );
 };

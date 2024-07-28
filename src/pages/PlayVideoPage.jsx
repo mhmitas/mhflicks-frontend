@@ -36,8 +36,8 @@ const PlayVideoPage = () => {
                 <div>
                     <h1 className='text-lg sm:text-xl md:text-2xl font-semibold'>{video?.title}</h1>
                 </div>
-                <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1 sm:*:w-1/2'>
-                    <div className='flex items-center justify-between'>
+                <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1'>
+                    <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
                         <div className='flex items-center justify-between gap-2 sm:gap-3' >
                             <figure><img src="/default-avatar.jpg" alt="" className='w-10 sm:w-12 rounded-full' /></figure>
                             <div className=''>
@@ -46,13 +46,13 @@ const PlayVideoPage = () => {
                             </div>
                         </div>
                         <div className=''>
-                            <button className='btn btn-sm sm:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
+                            <button className='btn btn-sm md:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
                         </div>
                     </div>
                     <div className='join sm:justify-end'>
-                        <button className='btn btn-sm sm:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
+                        <button className='btn btn-sm md:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
                         <span className='join-item bg-base-200 flex items-center'>|</span>
-                        <button className='btn btn-sm sm:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
+                        <button className='btn btn-sm md:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
                     </div>
                 </div>
                 <div className='bg-base-200 p-3 rounded-lg'>
