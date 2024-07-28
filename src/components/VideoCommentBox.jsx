@@ -28,7 +28,7 @@ const CommentBox = () => {
 
     return (
         <div className='mt-8'>
-            <h3 className='card-title mb-2'>200 Comments </h3>
+            <h3 className='sm:text-lg font-bold mb-2'>200 Comments </h3>
             <div className="flex flex-col space-y-4 rounded-md">
                 <textarea
                     className="textarea textarea-bordered w-full"
@@ -46,9 +46,9 @@ const CommentBox = () => {
 
 const Comment = ({ author, text, timestamp }) => {
     return (
-        <div className="flex space-x-3 py-4 border-b border-base-200">
+        <div className="flex space-x-3 py-2 sm:py-4 border-b border-base-200">
             <div className="avatar">
-                <div className="w-10 rounded-full">
+                <div className="size-7 sm:size-10 rounded-full">
                     <img src="https://via.placeholder.com/150" alt="User Avatar" />
                 </div>
             </div>
@@ -57,7 +57,7 @@ const Comment = ({ author, text, timestamp }) => {
                     <span className="font-semibold">{author}</span>
                     <span className="text-sm text-color-gray">{timestamp}</span>
                 </div>
-                <p>{text}</p>
+                <p className='text-sm sm:text-base'>{text}</p>
             </div>
         </div>
     );

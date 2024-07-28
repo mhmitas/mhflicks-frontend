@@ -22,8 +22,8 @@ const UserProfilePage = () => {
             <UserProfileHeader />
             <div className='grid grid-cols-2 gap-4'>
                 <UploadVideoSection />
-                <div className='bg-secondary p-8 flex items-center justify-center rounded-lg'>
-                    <button className='btn btn-neutral text-lg'> <FaEdit size={20} />Create Post</button>
+                <div className='bg-base-200 p-8 flex items-center justify-center rounded-lg'>
+                    <button className='btn btn-secondary text-base'> <FaEdit size={20} />Create Post</button>
                 </div>
             </div>
             <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />

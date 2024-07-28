@@ -30,34 +30,34 @@ const PlayVideoPage = () => {
     }
 
     return (
-        <section className="my-container max-w-4xl mx-auto pt-3 pb-10">
+        <section className="my-container max-w-4xl mx-auto sm:pt-3 pb-10">
             <VideoPlayer videoUrl={video?.video?.playback_url} />
-            <div className='space-y-3 my-4'>
+            <div className='space-y-2 sm:space-y-3 my-2 sm:my-4'>
                 <div>
-                    <h1 className='text-2xl font-semibold'>{video?.title}</h1>
+                    <h1 className='text-lg sm:text-xl md:text-2xl font-semibold'>{video?.title}</h1>
                 </div>
-                <div className='flex items-center justify-between pb-1'>
-                    <div className='flex items-center justify-between w-1/2' >
-                        <div className='flex items-center gap-3'>
-                            <figure><img src="/default-avatar.jpg" alt="" className='w-14 rounded-full' /></figure>
+                <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1 sm:*:w-1/2'>
+                    <div className='flex items-center justify-between'>
+                        <div className='flex items-center justify-between gap-2 sm:gap-3' >
+                            <figure><img src="/default-avatar.jpg" alt="" className='w-10 sm:w-12 rounded-full' /></figure>
                             <div className=''>
-                                <h1 className='line-clamp-1 text-2xl font-semibold'>Mahim Babu</h1>
-                                <h1 className='text-color-gray'>21M subscriber</h1>
+                                <h1 className='line-clamp-1 text-lg sm:text-xl md:text-2xl font-semibold'>Mahim Babu</h1>
+                                <h1 className='text-color-gray text-sm sm:text-base'>21M subscriber</h1>
                             </div>
                         </div>
-                        <div className='mx-auto'>
-                            <button className='btn btn-primary text-lg rounded-full'>Subscribe</button>
+                        <div className=''>
+                            <button className='btn btn-sm sm:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
                         </div>
                     </div>
-                    <div className='join'>
-                        <button className='btn join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
+                    <div className='join sm:justify-end'>
+                        <button className='btn btn-sm sm:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
                         <span className='join-item bg-base-200 flex items-center'>|</span>
-                        <button className='btn join-item rounded-r-full'><AiFillDislike size={20} /></button>
+                        <button className='btn btn-sm sm:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
                     </div>
                 </div>
                 <div className='bg-base-200 p-3 rounded-lg'>
                     <p className='font-semibold'>{uploaded}</p>
-                    <h1 className=''>{video?.description}</h1>
+                    <h1 className='text-sm sm:text-base'>{video?.description}</h1>
                 </div>
             </div>
             <CommentsSection />
