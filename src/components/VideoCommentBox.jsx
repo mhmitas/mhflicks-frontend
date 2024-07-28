@@ -6,7 +6,7 @@ const CommentsSection = () => {
     return (
         <div className="space-y-4">
             <CommentBox />
-            <div className="space-y-4">
+            <div className="space-y-2">
                 {comments.map((comment, index) => (
                     <Comment
                         key={index}
@@ -29,10 +29,10 @@ const CommentBox = () => {
     return (
         <div className='mt-8'>
             <h3 className='card-title mb-2'>200 Comments </h3>
-            <div className="flex flex-col space-y-2 p-4 border border-base-200 rounded-md">
+            <div className="flex flex-col space-y-4 rounded-md">
                 <textarea
                     className="textarea textarea-bordered w-full"
-                    rows="3"
+                    rows="2"
                     placeholder="Add a public comment..."
                 ></textarea>
                 <button className="btn btn-secondary btn-sm rounded-full self-end">

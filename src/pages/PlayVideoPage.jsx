@@ -23,18 +23,7 @@ const PlayVideoPage = () => {
     const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
 
     if (isLoading) {
-        return <div className="my-container flex w-full flex-col gap-4">
-            <div className="skeleton rounded-lg aspect-video w-full"></div>
-            <div className="skeleton h-6 w-1/2"></div>
-            <div className="flex items-center gap-4">
-                <div className="skeleton h-16 w-16 shrink-0 rounded-full"></div>
-                <div className="flex flex-col gap-4">
-                    <div className="skeleton h-4 w-20"></div>
-                    <div className="skeleton h-4 w-28"></div>
-                </div>
-            </div>
-            <div className="skeleton h-10 rounded-lg w-full"></div>
-        </div>
+        return <LoadingSkeleton />
     }
     if (error) {
         console.error(error);
@@ -77,3 +66,22 @@ const PlayVideoPage = () => {
 };
 
 export default PlayVideoPage;
+
+
+
+const LoadingSkeleton = () => {
+    return (
+        <div className="my-container flex w-full flex-col gap-4">
+            <div className="skeleton bg-base-200 rounded-lg aspect-video w-full"></div>
+            <div className="skeleton bg-base-200 h-6 w-1/2"></div>
+            <div className="flex items-center gap-4">
+                <div className="skeleton bg-base-200 h-16 w-16 shrink-0 rounded-full"></div>
+                <div className="flex flex-col gap-4">
+                    <div className="skeleton bg-base-200 h-4 w-20"></div>
+                    <div className="skeleton bg-base-200 h-4 w-28"></div>
+                </div>
+            </div>
+            <div className="skeleton bg-base-200 h-20 rounded-lg w-full"></div>
+        </div>
+    )
+}
