@@ -86,7 +86,7 @@ const UploadVideoSection = () => {
                         </div>
                         <div className='form-control'>
                             <label className='label label-text'>Thumbnail</label>
-                            <input {...register("thumbnail")} type="file" className='file-input file-input-bordered' />
+                            <input {...register("thumbnail")} type="file" accept='image/*' className='file-input file-input-bordered' />
                         </div>
                         <div className='flex items-center justify-center pt-4'>
                             <button type='submit' className='btn btn-secondary btn-sm rounded'>Upload</button>
