@@ -6,11 +6,12 @@ import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import CommentsSection from '../components/VideoCommentBox';
 import moment from 'moment';
 import VideoPlayer from '../components/video/VideoPlayer';
+import LikeSubscribe from '../components/video/LikeSubscribe';
 
 const PlayVideoPage = () => {
   const { id } = useParams();
 
-  const { data: video = {}, isLoading: isLoading, error: error, refetch: refetch } = useQuery({
+  const { data: video = {}, isLoading: isVideoLoading, error: videoFetchError } = useQuery({
     queryKey: [`video-data-${id}`],
     queryFn: async () => {
       const { data } = await axiosInstance(`/videos/get-video/${id}`)
@@ -19,13 +20,11 @@ const PlayVideoPage = () => {
     }
   })
 
-  const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
-
-  if (isLoading) {
+  if (isVideoLoading) {
     return <LoadingSkeleton />
   }
-  if (error) {
-    console.error(error);
+  if (videoFetchError) {
+    console.error(videoFetchError);
   }
 
   return (
@@ -35,29 +34,7 @@ const PlayVideoPage = () => {
         <div>
           <h1 className='text-lg sm:text-xl md:text-2xl font-semibold'>{video?.title}</h1>
         </div>
-        <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1'>
-          <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
-            <div className='flex items-center justify-between gap-2 sm:gap-3' >
-              <figure><img src="/default-avatar.jpg" alt="" className='w-10 sm:w-12 rounded-full' /></figure>
-              <div className=''>
-                <h1 className='line-clamp-1 text-lg sm:text-xl md:text-2xl font-semibold'>Mahim Babu</h1>
-                <h1 className='text-color-gray text-sm sm:text-base'>21M subscriber</h1>
-              </div>
-            </div>
-            <div className=''>
-              <button className='btn btn-sm md:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
-            </div>
-          </div>
-          <div className='join sm:justify-end'>
-            <button className='btn btn-sm md:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
-            <span className='join-item bg-base-200 flex items-center'>|</span>
-            <button className='btn btn-sm md:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
-          </div>
-        </div>
-        <div className='bg-base-200 p-3 rounded-lg'>
-          <p className='font-semibold'>{uploaded}</p>
-          <h1 className='text-sm sm:text-base'>{video?.description}</h1>
-        </div>
+        <LikeSubscribe id={id} />
       </div>
       <CommentsSection />
     </section>
