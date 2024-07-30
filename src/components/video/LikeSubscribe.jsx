@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import { viewsFormat } from '../../utils/viewsFormat';
 import { axiosInstance } from '../../hooks/useAxios';
@@ -6,9 +6,13 @@ import moment from 'moment';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
 import askModal from '../modals/ask/askModal';
+import askForSignInModal from '../modals/ask/AskForSignInModal';
+import { useNavigate } from 'react-router-dom';
 
 const LikeSubscribe = ({ id }) => {
+    const navigate = useNavigate()
     const [isSubscribed, setIsSubscribed] = useState(false);
+    const [isLiked, setIsLiked] = useState(null)
     const { user, loading: authLoading } = useAuth()
 
 
@@ -27,19 +31,68 @@ const LikeSubscribe = ({ id }) => {
         enabled: () => !!user && !authLoading,
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/get-like-and-subscribe/${id}?userId=${user?._id}`)
-            // console.log(data.data);
-            setIsSubscribed(!!data.data.subscribeObj)
-            return data.data
+            const result = data.data
+            console.log(result);
+            setIsSubscribed(!!result.subscribeObj)
+            if (result?.likeObj) {
+                if (result.likeObj.like) setIsLiked(true)
+                if (result.likeObj.false) setIsLiked(false)
+            } else { setIsLiked(null) }
+            return result
         }
     })
 
-    const { channel, subscriber, likeCount } = videoData;
+    let { channel, subscriber, likeCount } = videoData;
 
-    async function handleLike() {
-
+    async function handleLike(like) {
+        if (!user) {
+            const askForSignIn = await askForSignInModal()
+            if (askForSignIn) {
+                return navigate("/sign-in")
+            } else {
+                return
+            }
+        }
+        if (typeof like !== 'boolean') return;
+        if (like === true) {
+            if (isLiked === true) {
+                setIsLiked(null)
+            } else {
+                setIsLiked(true)
+            }
+        } else if (like === false) {
+            if (isLiked === false) {
+                setIsLiked(null)
+            } else {
+                setIsLiked(false)
+            }
+        }
+        const info = {
+            user: user?._id,
+            video: videoData?._id,
+            like
+        }
+        try {
+            const { data } = await axiosInstance.post(`/user-actions/like-video`, info)
+            console.log(data.data);
+            refetchLikeAndSubscribe()
+            refetchVideoData()
+        } catch (err) {
+            console.error("video like error:", err);
+            refetchLikeAndSubscribe()
+            refetchVideoData()
+        }
     }
     // handle subscribe
     async function handleSubscribe() {
+        if (!user) {
+            const askForSignIn = await askForSignInModal()
+            if (askForSignIn) {
+                return navigate("/sign-in")
+            } else {
+                return
+            }
+        }
         if (isSubscribed) {
             const ask = await askModal("Do you want to unsubscribe")
             if (!ask) return
@@ -97,12 +150,14 @@ const LikeSubscribe = ({ id }) => {
                     </div>
                 </div>
                 <div className='join sm:justify-end'>
-                    <button className='btn btn-sm md:btn-md join-item rounded-l-full'>
-                        <span className='text-warning '><AiFillLike size={20} /></span>
+                    <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item rounded-l-full'>
+                        <span className={`${isLiked === true && "text-info"}`}><AiFillLike size={20} /></span>
                         {viewsFormat(likeCount)}
                     </button>
                     <span className='join-item bg-base-200 flex items-center'>|</span>
-                    <button className='btn btn-sm md:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
+                    <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full'>
+                        <span className={`${isLiked === false && "text-info"}`}><AiFillDislike size={20} /></span>
+                    </button>
                 </div>
             </div>
             <DescriptionSection videoData={videoData} />
