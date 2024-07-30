@@ -3,9 +3,10 @@ import React from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { viewsFormat } from '../../utils/viewsFormat';
 
 const VideoCard = ({ video }) => {
-    const { creator, duration, thumbnail, title, views, likes } = video;
+    const { creator, duration, thumbnail, title, views, likeCount } = video;
 
     const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
 
@@ -26,7 +27,10 @@ const VideoCard = ({ video }) => {
                         <h1 className='text-gray-300'>{creator}</h1>
                         <div className='flex items-center gap-1 text-gray-300 '>
                             {/* <h3>{viewsFormat(views)} Views</h3> */}
-                            <h3 className='flex items-center gap-1'>{likes}<AiFillLike className='text-warning' /></h3>
+                            <h3 className='flex items-center gap-1'>
+                                <AiFillLike className='text-warning' />
+                                {viewsFormat(likeCount)}
+                            </h3>
                             •
                             <h3>{uploaded}</h3>
                         </div>

@@ -11,7 +11,7 @@ const HomeVideosSection = () => {
         queryKey: ["all-videos"],
         queryFn: async () => {
             const { data } = await axiosInstance("/videos/get-videos")
-            // console.log(data.data);
+            console.log(data.data);
             return data.data
         }
     })
