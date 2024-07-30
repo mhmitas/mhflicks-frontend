@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
 import { FaEdit } from 'react-icons/fa';
 import { Tooltip } from '@mui/material';
-import CloseModalButton from '../common/CloseModalButton';
 import UpdateProfileModal from '../modals/UpdateProfileModal';
 import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../../hooks/useAxios';
@@ -27,8 +25,8 @@ const UserProfileHeader = () => {
         <section>
             <div className='p-6 border rounded-md border-base-200 relative'>
                 <div className='flex flex-col sm:flex-row gap-4 items-center'>
-                    <figure className='w-36 h-3w-36'>
-                        <img className='w-full rounded-full' src={user?.avatar} alt="" />
+                    <figure className='size-36'>
+                        <img className='rounded-full w-full h-auto' src={user?.avatar} alt="" />
                     </figure>
                     <div className='flex flex-col items-center sm:items-start'>
                         <h1 className='text-4xl font-semibold mb-1'>{user?.fullName}</h1>

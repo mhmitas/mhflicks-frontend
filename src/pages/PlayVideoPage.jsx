@@ -8,61 +8,60 @@ import moment from 'moment';
 import VideoPlayer from '../components/video/VideoPlayer';
 
 const PlayVideoPage = () => {
-    const { id } = useParams();
+  const { id } = useParams();
 
-    // fetch video data
-    const { data: video = {}, isLoading, error } = useQuery({
-        queryKey: [id],
-        queryFn: async () => {
-            const { data } = await axiosInstance(`/videos/get-video/${id}`)
-            // console.log(data.data);
-            return data.data
-        }
-    })
-
-    const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
-
-    if (isLoading) {
-        return <LoadingSkeleton />
+  const { data: video = {}, isLoading: isLoading, error: error, refetch: refetch } = useQuery({
+    queryKey: [`video-data-${id}`],
+    queryFn: async () => {
+      const { data } = await axiosInstance(`/videos/get-video/${id}`)
+      // console.log(data.data);
+      return data.data
     }
-    if (error) {
-        console.error(error);
-    }
+  })
 
-    return (
-        <section className="my-container max-w-4xl mx-auto sm:pt-3 pb-10">
-            <VideoPlayer videoUrl={video?.video?.playback_url} />
-            <div className='space-y-2 sm:space-y-3 my-2 sm:my-4'>
-                <div>
-                    <h1 className='text-lg sm:text-xl md:text-2xl font-semibold'>{video?.title}</h1>
-                </div>
-                <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1'>
-                    <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
-                        <div className='flex items-center justify-between gap-2 sm:gap-3' >
-                            <figure><img src="/default-avatar.jpg" alt="" className='w-10 sm:w-12 rounded-full' /></figure>
-                            <div className=''>
-                                <h1 className='line-clamp-1 text-lg sm:text-xl md:text-2xl font-semibold'>Mahim Babu</h1>
-                                <h1 className='text-color-gray text-sm sm:text-base'>21M subscriber</h1>
-                            </div>
-                        </div>
-                        <div className=''>
-                            <button className='btn btn-sm md:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
-                        </div>
-                    </div>
-                    <div className='join sm:justify-end'>
-                        <button className='btn btn-sm md:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
-                        <span className='join-item bg-base-200 flex items-center'>|</span>
-                        <button className='btn btn-sm md:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
-                    </div>
-                </div>
-                <div className='bg-base-200 p-3 rounded-lg'>
-                    <p className='font-semibold'>{uploaded}</p>
-                    <h1 className='text-sm sm:text-base'>{video?.description}</h1>
-                </div>
+  const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
+
+  if (isLoading) {
+    return <LoadingSkeleton />
+  }
+  if (error) {
+    console.error(error);
+  }
+
+  return (
+    <section className="my-container max-w-4xl mx-auto sm:pt-3 pb-10">
+      <VideoPlayer videoUrl={video?.video?.playback_url} />
+      <div className='space-y-2 sm:space-y-3 my-2 sm:my-4'>
+        <div>
+          <h1 className='text-lg sm:text-xl md:text-2xl font-semibold'>{video?.title}</h1>
+        </div>
+        <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1'>
+          <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
+            <div className='flex items-center justify-between gap-2 sm:gap-3' >
+              <figure><img src="/default-avatar.jpg" alt="" className='w-10 sm:w-12 rounded-full' /></figure>
+              <div className=''>
+                <h1 className='line-clamp-1 text-lg sm:text-xl md:text-2xl font-semibold'>Mahim Babu</h1>
+                <h1 className='text-color-gray text-sm sm:text-base'>21M subscriber</h1>
+              </div>
             </div>
-            <CommentsSection />
-        </section>
-    );
+            <div className=''>
+              <button className='btn btn-sm md:btn-md btn-primary sm:text-lg rounded-full'>Subscribe</button>
+            </div>
+          </div>
+          <div className='join sm:justify-end'>
+            <button className='btn btn-sm md:btn-md join-item text-warning rounded-l-full'><AiFillLike size={20} /></button>
+            <span className='join-item bg-base-200 flex items-center'>|</span>
+            <button className='btn btn-sm md:btn-md join-item rounded-r-full'><AiFillDislike size={20} /></button>
+          </div>
+        </div>
+        <div className='bg-base-200 p-3 rounded-lg'>
+          <p className='font-semibold'>{uploaded}</p>
+          <h1 className='text-sm sm:text-base'>{video?.description}</h1>
+        </div>
+      </div>
+      <CommentsSection />
+    </section>
+  );
 };
 
 export default PlayVideoPage;
@@ -70,18 +69,18 @@ export default PlayVideoPage;
 
 
 const LoadingSkeleton = () => {
-    return (
-        <div className="my-container flex w-full flex-col gap-4">
-            <div className="skeleton bg-base-200 rounded-lg aspect-video w-full"></div>
-            <div className="skeleton bg-base-200 h-6 w-1/2"></div>
-            <div className="flex items-center gap-4">
-                <div className="skeleton bg-base-200 h-16 w-16 shrink-0 rounded-full"></div>
-                <div className="flex flex-col gap-4">
-                    <div className="skeleton bg-base-200 h-4 w-20"></div>
-                    <div className="skeleton bg-base-200 h-4 w-28"></div>
-                </div>
-            </div>
-            <div className="skeleton bg-base-200 h-20 rounded-lg w-full"></div>
+  return (
+    <div className="my-container flex w-full flex-col gap-4">
+      <div className="skeleton bg-base-200 rounded-lg aspect-video w-full"></div>
+      <div className="skeleton bg-base-200 h-6 w-1/2"></div>
+      <div className="flex items-center gap-4">
+        <div className="skeleton bg-base-200 h-16 w-16 shrink-0 rounded-full"></div>
+        <div className="flex flex-col gap-4">
+          <div className="skeleton bg-base-200 h-4 w-20"></div>
+          <div className="skeleton bg-base-200 h-4 w-28"></div>
         </div>
-    )
+      </div>
+      <div className="skeleton bg-base-200 h-20 rounded-lg w-full"></div>
+    </div>
+  )
 }
