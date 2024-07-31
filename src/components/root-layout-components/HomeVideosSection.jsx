@@ -17,7 +17,7 @@ const HomeVideosSection = () => {
     })
 
     if (isLoading) {
-        return <LoadingSkeleton />
+        return <LoadingSkeletonAllVideos />
     }
     if (error) {
         console.log(error);
@@ -36,7 +36,7 @@ export default HomeVideosSection;
 
 
 
-function LoadingSkeleton() {
+export function LoadingSkeletonAllVideos() {
     return (
         <section className='my-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto w-full h-full flex-1'>
             <Skeleton />

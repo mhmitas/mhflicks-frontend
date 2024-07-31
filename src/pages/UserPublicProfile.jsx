@@ -1,7 +1,11 @@
 import React from 'react';
 import UserPublicProfileHeader from '../components/UserPublicProfileComponents/UserPublicProfileHeader';
+import UserPublicProfileVideosSection from '../components/UserPublicProfileComponents/UserPublicProfileVideosSection';
+import { useParams } from 'react-router-dom';
 
 const UserPublicProfile = () => {
+    const { username } = useParams()
+
     return (
         <section className='my-container'>
             <UserPublicProfileHeader />
@@ -12,6 +16,7 @@ const UserPublicProfile = () => {
                 </nav>
                 <div className="divider p-0 m-0"></div>
             </div>
+            <UserPublicProfileVideosSection username={username} />
         </section>
     );
 };

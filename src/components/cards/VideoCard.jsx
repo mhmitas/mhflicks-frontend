@@ -31,7 +31,7 @@ const VideoCard = ({ video }) => {
                     <div className='flex items-center gap-1 text-color-gray '>
                         {/* <h3>{viewsFormat(views)} Views</h3> */}
                         <h3 className='flex items-center gap-1'>
-                            <AiFillLike className='text-warning' />
+                            <AiFillLike className='text-info' />
                             {viewsFormat(likes)}
                         </h3>
                         ▪
