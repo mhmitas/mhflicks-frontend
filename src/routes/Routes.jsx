@@ -9,11 +9,14 @@ import LikedVideoPage from "../pages/user-pages/LikedVideoPage";
 import SavedPlaylistsPage from "../pages/user-pages/SavedPlaylistsPage";
 import PrivetRoute from "./PrivetRoute";
 import PlayVideoPage from "../pages/PlayVideoPage";
+import ErrorPage from "../error-page";
+import UserPublicProfile from "../pages/UserPublicProfile";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -24,6 +27,10 @@ export const router = createBrowserRouter([
                 element: <PrivetRoute>
                     <UserProfilePage />
                 </PrivetRoute>
+            },
+            {
+                path: "/profile/:username",
+                element: <UserPublicProfile />
             },
             {
                 path: "/history",

@@ -26,7 +26,7 @@ const VideoCard = ({ video }) => {
                     {/* video title */}
                     <Link to={`/play-video/${video?._id}`}><h1 title={title} className='text-lg line-clamp-2'>{title}</h1></Link>
                     {/* channel name */}
-                    <Link to={`/@${channel?.username}`}><h1 className={`text-color-gray hover:text-info`}>{channel?.fullName}</h1></Link>
+                    <Link to={`/profile/@${channel?.username}`}><h1 className={`text-color-gray hover:text-info`}>{channel?.fullName}</h1></Link>
                     {/* like time and video */}
                     <div className='flex items-center gap-1 text-color-gray '>
                         {/* <h3>{viewsFormat(views)} Views</h3> */}

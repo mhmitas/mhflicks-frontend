@@ -130,12 +130,12 @@ const LikeSubscribe = ({ id }) => {
                     {/* channel info */}
                     <div className='flex items-center justify-between gap-2 sm:gap-3' >
                         {/* channel avatar */}
-                        <Link to={`/@${channel?.channelUsername}`}><figure><img src={channel?.channelAvatar} alt="" className='size-10 sm:size-12 rounded-full' /></figure></Link>
+                        <Link to={`/profile/@${channel?.channelUsername}`}><figure><img src={channel?.channelAvatar} alt="" className='size-10 sm:size-12 rounded-full' /></figure></Link>
                         <div className=''>
                             {/* channel name */}
-                            <Link to={`/@${channel?.channelUsername}`}><h1 className='line-clamp-1 text-lg md:text-xl font-semibold'>{channel?.channelName}</h1></Link>
-                            {/* channel's subscriber */}
-                            <h1 className='text-color-gray text-xm sm:text-sm font-semibold'>{subscriber} Subscriber</h1>
+                            <Link to={`/profile/@${channel?.channelUsername}`}><h1 className='line-clamp-1 text-lg md:text-xl font-semibold'>{channel?.channelName}</h1></Link>
+                            {/* channel's subscribers */}
+                            <h1 className='text-color-gray text-xm sm:text-sm font-semibold'>{subscriber} subscriber{subscriber > 0 && "s"}</h1>
                         </div>
                     </div>
                     <div className=''>

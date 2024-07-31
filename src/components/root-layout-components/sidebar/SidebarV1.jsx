@@ -1,8 +1,8 @@
 // Sidebar.js
 import { Tooltip } from '@mui/material';
 import React from 'react';
-import { AiOutlineCompass, AiOutlinePlayCircle, AiOutlineHistory, AiOutlineLike, AiOutlineUser, AiOutlineHome } from 'react-icons/ai';
-import { MdPlaylistPlay } from "react-icons/md";
+import { AiOutlinePlayCircle, AiOutlineLike, AiOutlineUser } from 'react-icons/ai';
+import { GoHome } from 'react-icons/go';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen }) => {
@@ -45,7 +45,7 @@ function SidebarMenuItem({ name, path, Icon }) {
 
 
 const sidebarMenuItems = [
-    { name: "Home", path: "/", icon: AiOutlineHome },
+    { name: "Home", path: "/", icon: GoHome },
     // { name: "Explore", path: "/explore", icon: AiOutlineCompass },
     { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle },
 ]
