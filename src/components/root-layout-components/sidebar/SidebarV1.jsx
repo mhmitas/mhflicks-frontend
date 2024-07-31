@@ -46,13 +46,13 @@ function SidebarMenuItem({ name, path, Icon }) {
 
 const sidebarMenuItems = [
     { name: "Home", path: "/", icon: AiOutlineHome },
-    { name: "Explore", path: "/explore", icon: AiOutlineCompass },
+    // { name: "Explore", path: "/explore", icon: AiOutlineCompass },
     { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle },
 ]
 
 const sidebarUserMenuItems = [
     { name: "You", path: "/user-profile", icon: AiOutlineUser },
-    { name: "History", path: "/history", icon: AiOutlineHistory },
-    { name: "Playlist", path: "/playlists", icon: MdPlaylistPlay },
+    // { name: "History", path: "/history", icon: AiOutlineHistory },
+    // { name: "Playlist", path: "/playlists", icon: MdPlaylistPlay },
     { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike },
 ]

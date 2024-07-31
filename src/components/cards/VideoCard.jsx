@@ -31,7 +31,7 @@ const VideoCard = ({ video }) => {
                                 <AiFillLike className='text-warning' />
                                 {viewsFormat(likeCount)}
                             </h3>
-                            •
+                            ▪
                             <h3>{uploaded}</h3>
                         </div>
                     </div>

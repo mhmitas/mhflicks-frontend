@@ -2,11 +2,9 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../hooks/useAxios';
-import { AiFillDislike, AiFillLike } from 'react-icons/ai';
-import CommentsSection from '../components/VideoCommentBox';
-import moment from 'moment';
 import VideoPlayer from '../components/video/VideoPlayer';
 import LikeSubscribe from '../components/video/LikeSubscribe';
+import CommentsSection from '../components/video/video-comment/VideoCommentSection';
 
 const PlayVideoPage = () => {
   const { id } = useParams();
@@ -36,7 +34,7 @@ const PlayVideoPage = () => {
         </div>
         <LikeSubscribe id={id} />
       </div>
-      <CommentsSection />
+      <CommentsSection videoId={id} />
     </section>
   );
 };

@@ -18,7 +18,7 @@ const LikeSubscribe = ({ id }) => {
 
     // fetch video data
     const { data: videoData = {}, isLoading: isVideoDataLoading, error: videoDataError, refetch: refetchVideoData } = useQuery({
-        queryKey: [`video-data-${id}`, id],
+        queryKey: [`video-data-${id}`, user],
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/get-video-page-data/${id}`)
             // console.log(data.data);
@@ -27,7 +27,7 @@ const LikeSubscribe = ({ id }) => {
     })
     // fetch like and subscribe object
     const { data: likeAndSubscribeObject = {}, isLoading: LSLoading, error: LSError, refetch: refetchLikeAndSubscribe } = useQuery({
-        queryKey: [`like-and-subscribe-obj-${id}`],
+        queryKey: [`like-and-subscribe-obj-${id}`, user],
         enabled: () => !!user && !authLoading,
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/get-like-and-subscribe/${id}?userId=${user?._id}`)
@@ -46,7 +46,7 @@ const LikeSubscribe = ({ id }) => {
 
     async function handleLike(like) {
         if (!user) {
-            const askForSignIn = await askForSignInModal()
+            const askForSignIn = await askForSignInModal("to like this video")
             if (askForSignIn) {
                 return navigate("/sign-in")
             } else {
@@ -86,7 +86,7 @@ const LikeSubscribe = ({ id }) => {
     // handle subscribe
     async function handleSubscribe() {
         if (!user) {
-            const askForSignIn = await askForSignInModal()
+            const askForSignIn = await askForSignInModal("to subscribe")
             if (askForSignIn) {
                 return navigate("/sign-in")
             } else {
@@ -126,6 +126,7 @@ const LikeSubscribe = ({ id }) => {
         <>
             <div className='flex flex-col sm:flex-row gap-2 sm:items-center justify-between pb-1'>
                 <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
+                    {/* channel info */}
                     <div className='flex items-center justify-between gap-2 sm:gap-3' >
                         <figure><img src={channel?.channelAvatar} alt="" className='w-10 sm:w-12 rounded-full' /></figure>
                         <div className=''>
@@ -149,6 +150,7 @@ const LikeSubscribe = ({ id }) => {
                         </button>
                     </div>
                 </div>
+                {/* like buttons */}
                 <div className='join sm:justify-end'>
                     <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item rounded-l-full'>
                         <span className={`${isLiked === true && "text-info"}`}><AiFillLike size={20} /></span>
@@ -169,13 +171,13 @@ export default LikeSubscribe;
 
 
 function DescriptionSection({ videoData }) {
-
+    const [collapseDescription, setCollapseDescription] = useState(true)
     const uploaded = moment(new Date(videoData.createdAt), "YYYYMMDD").fromNow();
 
     return (
         <div className='bg-base-200 p-3 rounded-lg'>
             <p className='font-semibold'>{uploaded}</p>
-            <h1 className='text-sm sm:text-base'>{videoData?.description}</h1>
+            <h1 onClick={(e) => { setCollapseDescription(!collapseDescription) }} className={`text-sm sm:text-base ${collapseDescription ? "line-clamp-5 md:line-clamp-[8] lg:line-clamp-[10]" : ""}`}>{videoData?.description}</h1>
         </div>
     )
 }
