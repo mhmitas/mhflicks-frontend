@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
 import askModal from '../modals/ask/askModal';
 import askForSignInModal from '../modals/ask/AskForSignInModal';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 
 const LikeSubscribe = ({ id }) => {
@@ -32,8 +32,8 @@ const LikeSubscribe = ({ id }) => {
         enabled: () => !!user && !authLoading,
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/get-like-and-subscribe/${id}?userId=${user?._id}`)
-            const result = data.data
-            console.log(result);
+            const result = data.data;
+            // console.log(result);
             setIsSubscribed(!!result.subscribeObj)
             if (result?.likeObj) {
                 if (result.likeObj.like) setIsLiked(true)
@@ -129,10 +129,13 @@ const LikeSubscribe = ({ id }) => {
                 <div className='flex items-center justify-between sm:justify-start sm:gap-10 flex-1'>
                     {/* channel info */}
                     <div className='flex items-center justify-between gap-2 sm:gap-3' >
-                        <figure><img src={channel?.channelAvatar} alt="" className='w-10 sm:w-12 rounded-full' /></figure>
+                        {/* channel avatar */}
+                        <Link to={`/@${channel?.channelUsername}`}><figure><img src={channel?.channelAvatar} alt="" className='size-10 sm:size-12 rounded-full' /></figure></Link>
                         <div className=''>
-                            <h1 className='line-clamp-1 text-lg sm:text-xl md:text-2xl font-semibold'>{channel?.channelName}</h1>
-                            <h1 className='text-color-gray text-sm sm:text-base font-semibold'>{subscriber} Subscriber</h1>
+                            {/* channel name */}
+                            <Link to={`/@${channel?.channelUsername}`}><h1 className='line-clamp-1 text-lg md:text-xl font-semibold'>{channel?.channelName}</h1></Link>
+                            {/* channel's subscriber */}
+                            <h1 className='text-color-gray text-xm sm:text-sm font-semibold'>{subscriber} Subscriber</h1>
                         </div>
                     </div>
                     <div className=''>
