@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 import askModal from '../modals/ask/askModal';
 import askForSignInModal from '../modals/ask/AskForSignInModal';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from '@mui/material';
 
 const LikeSubscribe = ({ id }) => {
     const navigate = useNavigate()
@@ -135,31 +136,37 @@ const LikeSubscribe = ({ id }) => {
                         </div>
                     </div>
                     <div className=''>
-                        <button
-                            onClick={handleSubscribe}
-                            className={
-                                `btn btn-sm md:btn-md sm:text-lg ${isSubscribed ?
-                                    "btn-neutral" :
-                                    "btn-primary"
-                                } rounded-full`
-                            }>
-                            {isSubscribed ?
-                                "Subscribed" :
-                                "Subscribe"
-                            }
-                        </button>
+                        <Tooltip arrow title={<span className='text-sm'>{isSubscribed ? "Click to unsubscribe" : "Subscribe"}</span>}>
+                            <button
+                                onClick={handleSubscribe}
+                                className={
+                                    `btn btn-sm md:btn-md md:text-lg ${isSubscribed ?
+                                        "btn-neutral" :
+                                        "btn-primary"
+                                    } rounded-full`
+                                }>
+                                {isSubscribed ?
+                                    "Subscribed" :
+                                    "Subscribe"
+                                }
+                            </button>
+                        </Tooltip>
                     </div>
                 </div>
                 {/* like buttons */}
                 <div className='join sm:justify-end'>
-                    <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item rounded-l-full'>
-                        <span className={`${isLiked === true && "text-info"}`}><AiFillLike size={20} /></span>
-                        {viewsFormat(likeCount)}
-                    </button>
+                    <Tooltip arrow title={<span className='text-sm'>Like this video</span>}>
+                        <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item rounded-l-full'>
+                            <span className={`${isLiked === true && "text-info"}`}><AiFillLike size={20} /></span>
+                            {viewsFormat(likeCount)}
+                        </button>
+                    </Tooltip>
                     <span className='join-item bg-base-200 flex items-center'>|</span>
-                    <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full'>
-                        <span className={`${isLiked === false && "text-info"}`}><AiFillDislike size={20} /></span>
-                    </button>
+                    <Tooltip arrow title={<span className='text-sm'>Unlike this video</span>}>
+                        <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full'>
+                            <span className={`${isLiked === false && "text-info"}`}><AiFillDislike size={20} /></span>
+                        </button>
+                    </Tooltip>
                 </div>
             </div>
             <DescriptionSection videoData={videoData} />

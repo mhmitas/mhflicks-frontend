@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import { viewsFormat } from '../../utils/viewsFormat';
 
 const VideoCard = ({ video }) => {
-    const { creator, duration, thumbnail, title, views, likeCount } = video;
+    const { duration, thumbnail, title, views, likes, channel } = video;
 
     const uploaded = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
-
+    console.log(video);
     return (
         <Link to={`/play-video/${video?._id}`}>
             <div className='p-1 h-full rounded-lg sm:rounded-xl group hover:cursor-pointer duration-500'>
@@ -23,13 +23,13 @@ const VideoCard = ({ video }) => {
                     {/* channel logo */}
                     <figure><img className='rounded-full w-10' src="/default-avatar.jpg" alt="" /></figure>
                     <div className='*:leading-6'>
-                        <h1 className='text-lg mb-1 line-clamp-2'>{title}</h1>
-                        <h1 className='text-gray-300'>{creator}</h1>
+                        <h1 title={title} className='text-lg mb-1 line-clamp-2'>{title}</h1>
+                        <h1 className='text-gray-300'>{channel?.name}</h1>
                         <div className='flex items-center gap-1 text-gray-300 '>
                             {/* <h3>{viewsFormat(views)} Views</h3> */}
                             <h3 className='flex items-center gap-1'>
                                 <AiFillLike className='text-warning' />
-                                {viewsFormat(likeCount)}
+                                {viewsFormat(likes)}
                             </h3>
                             ▪
                             <h3>{uploaded}</h3>
