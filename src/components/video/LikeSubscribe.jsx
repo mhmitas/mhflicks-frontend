@@ -177,7 +177,7 @@ function DescriptionSection({ videoData }) {
     return (
         <div className='bg-base-200 p-3 rounded-lg'>
             <p className='font-semibold'>{uploaded}</p>
-            <h1 onClick={(e) => { setCollapseDescription(!collapseDescription) }} className={`text-sm sm:text-base ${collapseDescription ? "line-clamp-5 md:line-clamp-[8] lg:line-clamp-[10]" : ""}`}>{videoData?.description}</h1>
+            <h1 onClick={(e) => { setCollapseDescription(!collapseDescription) }} className={`text-sm sm:text-base cursor-default ${collapseDescription ? "line-clamp-5 md:line-clamp-[8] lg:line-clamp-[10]" : ""}`}>{videoData?.description}</h1>
         </div>
     )
 }
