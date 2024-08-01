@@ -11,6 +11,8 @@ import PrivetRoute from "./PrivetRoute";
 import PlayVideoPage from "../pages/PlayVideoPage";
 import ErrorPage from "../error-page";
 import UserPublicProfile from "../pages/UserPublicProfile";
+import UserPublicProfileVideosSection from "../components/UserPublicProfileComponents/UserPublicProfileVideosSection";
+import UserPublicProfilePostsSection from "../components/UserPublicProfileComponents/UserPublicProfilePostsSection";
 
 export const router = createBrowserRouter([
     {
@@ -23,29 +25,39 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
-                path: "/user-profile",
+                path: "user-profile",
                 element: <PrivetRoute>
                     <UserProfilePage />
                 </PrivetRoute>
             },
             {
-                path: "/profile/:username",
-                element: <UserPublicProfile />
+                path: "profile/:username",
+                element: <UserPublicProfile />,
+                children: [
+                    {
+                        index: true,
+                        element: <UserPublicProfileVideosSection />
+                    },
+                    {
+                        path: "posts",
+                        element: <UserPublicProfilePostsSection />
+                    },
+                ]
             },
             {
-                path: "/history",
+                path: "history",
                 element: <WatchHistory />
             },
             {
-                path: "/liked-videos",
+                path: "liked-videos",
                 element: <LikedVideoPage />
             },
             {
-                path: "/playlists",
+                path: "playlists",
                 element: <SavedPlaylistsPage />
             },
             {
-                path: "/play-video/:id",
+                path: "play-video/:id",
                 element: <PlayVideoPage />
             },
         ]

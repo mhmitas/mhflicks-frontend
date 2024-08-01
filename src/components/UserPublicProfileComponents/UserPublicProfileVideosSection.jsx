@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { axiosInstance } from '../../hooks/useAxios';
 import { LoadingSkeletonAllVideos } from '../root-layout-components/HomeVideosSection';
-import VideoCard from '../cards/VideoCard';
 import UserPublicProfileVideoCard from '../cards/UserPublicProfileVideoCard';
+import { useParams } from 'react-router-dom';
 
-const UserPublicProfileVideosSection = ({ username }) => {
+const UserPublicProfileVideosSection = () => {
+    const { username } = useParams()
     const editUserName = username.split("@");
 
     const { data: videos = [], isLoading, refetch, error } = useQuery({

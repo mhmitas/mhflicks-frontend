@@ -12,7 +12,7 @@ const ConfirmModal = ({ message, onConfirm, onCancel }) => {
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
             onClick={handleOverlayClick}
         >
-            <div className="bg-white text-slate-950 rounded-lg shadow-lg p-6 w-96">
+            <div className="bg-base-200 rounded-lg shadow-lg p-6 w-96">
                 <h2 className="mb-2">Confirm Action</h2>
                 <div className="text-lg font-semibold mb-6">{message}</div>
                 <div className="flex justify-end space-x-4">
