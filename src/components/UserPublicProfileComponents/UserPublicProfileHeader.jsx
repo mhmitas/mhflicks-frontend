@@ -1,21 +1,57 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { axiosInstance } from '../../hooks/useAxios';
 import useAuth from '../../hooks/useAuth';
+import askForSignInModal from '../modals/ask/AskForSignInModal';
+import { useNavigate } from 'react-router-dom';
+import { Tooltip } from '@mui/material';
+import askModal from '../modals/ask/askModal';
 
 const UserPublicProfileHeader = ({ username, channelId }) => {
+    const navigate = useNavigate()
+    const [subscribed, setSubscribed] = useState(false)
     const { user: currentUser, loading: authLoading } = useAuth();
 
-    const { data: profileData = {}, isLoading, error } = useQuery({
+    const { data: profileData = {}, isLoading, error, refetch } = useQuery({
         queryKey: [`user-public-profile-${username}`, channelId],
         queryFn: async () => {
             const { data } = await axiosInstance(`/users/public-profile/${channelId}${currentUser && `/?currentUser=${currentUser?._id}`}`)
-            console.log(data.data);
+            // console.log(data.data);
+            setSubscribed(data.data.isSubscribed)
             return data.data
         }
     })
     const { avatar, coverImage, fullName, stats, isSubscribed, _id, username: dbUsername } = profileData;
 
+    async function handleSubscribe() {
+        if (!currentUser) {
+            const askForSignIn = await askForSignInModal("to subscribe")
+            if (askForSignIn) {
+                return navigate("/sign-in")
+            } else {
+                return
+            }
+        }
+        if (isSubscribed) {
+            const ask = await askModal("Do you want to unsubscribe")
+            if (!ask) return
+            setSubscribed(false)
+        } else {
+            setSubscribed(true)
+        }
+        try {
+            const info = {
+                channel: profileData?._id,
+                subscriber: currentUser?._id
+            }
+            const { data } = await axiosInstance.post(`/user-actions/subscribe`, info)
+            console.log(data);
+            refetch()
+        } catch (err) {
+            console.error(err);
+            refetch()
+        }
+    }
 
     if (isLoading || authLoading) {
         return <span>Loading...</span>
@@ -58,7 +94,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
                             It's not what you look at that matters, it's what you see. - David Thoreau
                         </p>
                     </div>
-                    <SubscribeButton />
+                    <SubscribeButton subscribed={subscribed} handleSubscribe={handleSubscribe} />
                 </div>
             </div>
         </header>
@@ -67,8 +103,10 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
 
 export default UserPublicProfileHeader;
 
-function SubscribeButton() {
+function SubscribeButton({ subscribed, handleSubscribe }) {
     return (
-        <button className="btn btn-sm md:btn-md btn-primary rounded-full md:text-lg">Subscribe</button>
+        <Tooltip title={<span className='text-sm'>{subscribed ? "Click to unsubscribe" : "Subscribe"}</span>}>
+            <button onClick={handleSubscribe} className={`btn btn-sm md:btn-md ${!subscribed && "btn-primary"} rounded-full md:text-lg`}>{subscribed ? "Subscribed" : "Subscribe"}</button>
+        </Tooltip>
     )
 }
