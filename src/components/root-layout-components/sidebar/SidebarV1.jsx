@@ -38,7 +38,7 @@ function SidebarMenuItem({ name, path, Icon, available }) {
                 <Tooltip title={<span className='text-sm'>{name}</span>} placement='right'>
                     <button
                         onClick={() => {
-                            MessageModal(<>{name} Page is Currently available. We will make it available soon</>)
+                            MessageModal(<>{name} Page is Currently available. We will make it available soon.</>)
                         }}
                         className="text-base flex md:items-center lg:items-stretch gap-2 w-full lg:mx-0 p-2"
                     >

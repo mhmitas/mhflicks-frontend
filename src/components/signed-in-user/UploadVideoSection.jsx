@@ -98,7 +98,7 @@ const UploadVideoSection = () => {
             {showProgressModal &&
                 <div className='fixed bottom-2 right-2 bg-secondary p-4 rounded-md z-40 text-secondary-content text-center'>
                     <div className=''><span className='loading loading-spinner'></span></div>
-                    <h3 className='text-lg font-semibold'>File Uploading</h3>
+                    <h3 className='text-lg font-semibold'>File Uploading {progress.toFixed(1) - 1}%</h3>
                     <p>Please don't reload this page</p>
                     <progress className="progress border progress-info w-56" value={progress} max={100}></progress>
                 </div>

@@ -41,7 +41,7 @@ function Modal({ onCancel, message }) {
         <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-55 z-50"
         >
-            <div className="bg-base-200 rounded-lg shadow-lg p-5 w-96">
+            <div className="bg-base-200 rounded-lg shadow-lg p-5 w-96 m-8">
                 <div className="text-lg font-semibold mb-4 text-center">
                     {message}
                 </div>
