@@ -3,6 +3,7 @@ import { Tooltip } from '@mui/material';
 import React from 'react';
 import { AiOutlinePlayCircle, AiOutlineLike, AiOutlineUser } from 'react-icons/ai';
 import { GoHome } from 'react-icons/go';
+import { MdArticle } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen }) => {
@@ -47,7 +48,8 @@ function SidebarMenuItem({ name, path, Icon }) {
 const sidebarMenuItems = [
     { name: "Home", path: "/", icon: GoHome },
     // { name: "Explore", path: "/explore", icon: AiOutlineCompass },
-    { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle },
+    { name: "Videos", path: "/videos", icon: AiOutlinePlayCircle },
+    { name: "Posts", path: "/posts", icon: MdArticle },
 ]
 
 const sidebarUserMenuItems = [
