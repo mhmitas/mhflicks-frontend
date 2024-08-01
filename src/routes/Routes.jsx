@@ -13,6 +13,8 @@ import ErrorPage from "../error-page";
 import UserPublicProfile from "../pages/UserPublicProfile";
 import UserPublicProfileVideosSection from "../components/UserPublicProfileComponents/UserPublicProfileVideosSection";
 import UserPublicProfilePostsSection from "../components/UserPublicProfileComponents/UserPublicProfilePostsSection";
+import Videos from "../pages/videos/Videos";
+import Posts from "../pages/posts/Posts";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
             {
                 index: true,
                 element: <Home />
+            },
+            {
+                path: "/videos",
+                element: <Videos />
+            },
+            {
+                path: "/posts",
+                element: <Posts />
             },
             {
                 path: "user-profile",
