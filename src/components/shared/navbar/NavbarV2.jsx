@@ -1,5 +1,4 @@
 import React from 'react';
-import BrandLogo from '../../Logos/BrandLogo';
 import NavbarV1SearchInputBox from './NavbarV1SearchInputBox';
 import SignedInUserNavbarSection from '../../signed-in-user/SignedInUserNavbarSection';
 import { AiOutlineBars } from 'react-icons/ai';
@@ -7,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import BrandLogo2 from '../../Logos/BrandLogo2';
 
+// currently using NavbarV2
 const NavbarV2 = ({ sidebarOpen, setSidebarOpen }) => {
     const { user, loading } = useAuth()
 

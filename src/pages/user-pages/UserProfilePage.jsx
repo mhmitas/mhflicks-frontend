@@ -21,7 +21,7 @@ const UserProfilePage = () => {
     return (
         <section className='my-container *:mb-10'>
             <UserProfileHeader />
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <UploadVideoSection />
                 <UploadPostSection />
             </div>
