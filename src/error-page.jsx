@@ -13,7 +13,7 @@ export default function ErrorPage() {
                 <p className="text-3xl font-bold mb-4">
                     <i>{error.statusText || error.message}</i>
                 </p>
-                <button onClick={() => navigate(-1)} className="btn btn-primary text-lg">Go Back</button>
+                <button onClick={() => navigate(-1)} className="btn btn-xs btn-primary">Go Back</button>
             </div>
         </section>
     );

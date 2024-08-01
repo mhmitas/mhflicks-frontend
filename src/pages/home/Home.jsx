@@ -12,3 +12,14 @@ const Home = () => {
 
 export default Home;
 
+
+/* 
+
+const { } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+
+    }
+})
+
+*/
