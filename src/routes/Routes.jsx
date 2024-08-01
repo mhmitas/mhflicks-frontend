@@ -15,6 +15,8 @@ import UserPublicProfileVideosSection from "../components/UserPublicProfileCompo
 import UserPublicProfilePostsSection from "../components/UserPublicProfileComponents/UserPublicProfilePostsSection";
 import Videos from "../pages/videos/Videos";
 import Posts from "../pages/posts/Posts";
+import SemiPrivetRoute from "./SemiPrivetRoute";
+import SubscriptionsPage from "../pages/user-pages/SubscriptionsPage";
 
 export const router = createBrowserRouter([
     {
@@ -35,24 +37,14 @@ export const router = createBrowserRouter([
                 element: <Posts />
             },
             {
-                path: "user-profile",
-                element: <PrivetRoute>
-                    <UserProfilePage />
-                </PrivetRoute>
+                path: "/subscriptions",
+                element: <SubscriptionsPage />
             },
             {
-                path: "profile/:username",
-                element: <UserPublicProfile />,
-                children: [
-                    {
-                        index: true,
-                        element: <UserPublicProfileVideosSection />
-                    },
-                    {
-                        path: "posts",
-                        element: <UserPublicProfilePostsSection />
-                    },
-                ]
+                path: "user-profile",
+                element: <SemiPrivetRoute>
+                    <UserProfilePage />
+                </SemiPrivetRoute>
             },
             {
                 path: "history",
@@ -69,6 +61,20 @@ export const router = createBrowserRouter([
             {
                 path: "play-video/:id",
                 element: <PlayVideoPage />
+            },
+            {
+                path: "profile/:username",
+                element: <UserPublicProfile />,
+                children: [
+                    {
+                        index: true,
+                        element: <UserPublicProfileVideosSection />
+                    },
+                    {
+                        path: "posts",
+                        element: <UserPublicProfilePostsSection />
+                    },
+                ]
             },
         ]
     },

@@ -3,9 +3,8 @@ import { Tooltip } from '@mui/material';
 import React from 'react';
 import { AiOutlinePlayCircle, AiOutlineLike, AiOutlineUser, AiOutlineHistory } from 'react-icons/ai';
 import { GoHome } from 'react-icons/go';
-import { MdArticle, MdOutlineArticle, MdPlaylistPlay } from 'react-icons/md';
+import { MdOutlineArticle, MdPlaylistPlay } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
-import MessageModal from '../../modals/MessageModal';
 
 const Sidebar = ({ sidebarOpen }) => {
 
@@ -32,29 +31,9 @@ export default Sidebar;
 
 function SidebarMenuItem({ name, path, Icon, available }) {
 
-    if (!available) {
-        return (
-            <li className='md:p-1 lg:p-0'>
-                <Tooltip title={<span className='text-sm'>{name}</span>} placement='right'>
-                    <button
-                        onClick={() => {
-                            MessageModal(<>{name} Page is Currently available. We will make it available soon.</>)
-                        }}
-                        className="text-base flex md:items-center lg:items-stretch gap-2 w-full lg:mx-0 p-2"
-                    >
-                        <span className="md:mx-auto lg:mx-0">
-                            <Icon size={25} />
-                        </span>
-                        <span className='md:hidden lg:inline-block'>{name}</span>
-                    </button>
-                </Tooltip>
-            </li>
-        )
-    }
-
     return (
         <li className='md:p-1 lg:p-0'>
-            <Tooltip title={<span className='text-sm'>{name}</span>} placement='right'>
+            <Tooltip arrow title={<span className='text-sm'>{name}</span>} placement='right'>
                 <NavLink to={path} className="text-base flex md:items-center lg:items-stretch gap-2 w-full lg:mx-0 p-2">
                     <span className="md:mx-auto lg:mx-0">
                         <Icon size={25} />
@@ -70,13 +49,13 @@ function SidebarMenuItem({ name, path, Icon, available }) {
 const sidebarMenuItems = [
     { name: "Home", path: "/", icon: GoHome, available: true },
     // { name: "Explore", path: "/explore", icon: AiOutlineCompass },
-    { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle, available: false },
     { name: "Posts", path: "/posts", icon: MdOutlineArticle, available: true },
+    { name: "Subscriptions", path: "/subscriptions", icon: AiOutlinePlayCircle, available: false },
 ]
 
 const sidebarUserMenuItems = [
     { name: "You", path: "/user-profile", icon: AiOutlineUser, available: true },
     { name: "History", path: "/history", icon: AiOutlineHistory, available: false },
     { name: "Playlist", path: "/playlists", icon: MdPlaylistPlay, available: false },
-    { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike, available: false },
+    { name: "Liked Videos", path: "/liked-videos", icon: AiOutlineLike, available: true },
 ]

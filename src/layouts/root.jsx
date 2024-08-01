@@ -13,7 +13,7 @@ const Root = () => {
     }
     return (
         <SidebarContext.Provider value={value}>
-            <div>
+            <div className='min-h-screen'>
                 <NavbarV2 sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <div className='pt-16 flex'>
                     <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
