@@ -22,13 +22,13 @@ const VideoCard = ({ video }) => {
             <div className='flex gap-3 font-semibold'>
                 {/* channel logo */}
                 <figure><img className='rounded-full size-10 mt-1' src={channel?.avatar || "/default-avatar.jpg"} alt="" /></figure>
-                <div className='*:leading-6 flex-1'>
+                <div className='flex-1'>
                     {/* video title */}
-                    <Link to={`/play-video/${video?._id}`}><h1 title={title} className='text-lg line-clamp-2'>{title}</h1></Link>
+                    <Link to={`/play-video/${video?._id}`}><h1 title={title} className='text-lg line-clamp-2 leading-6'>{title}</h1></Link>
                     {/* channel name */}
-                    <Link to={`/profile/@${channel?.username}`}><h1 className={`text-color-gray hover:text-info`}>{channel?.fullName}</h1></Link>
+                    <Link to={`/profile/@${channel?.username}`}><h1 className={`text-color-gray hover:text-info leading-6`}>{channel?.fullName}</h1></Link>
                     {/* like time and video */}
-                    <div className='flex items-center gap-1 text-color-gray '>
+                    <div className='flex items-center gap-1 text-color-gray leading-4 text-sm'>
                         {/* <h3>{viewsFormat(views)} Views</h3> */}
                         <h3 className='flex items-center gap-1'>
                             <AiFillLike className='text-info' />

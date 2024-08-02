@@ -159,14 +159,14 @@ const LikeSubscribe = ({ id }) => {
                 {/* like buttons */}
                 <div className='join sm:justify-end'>
                     <Tooltip arrow title={<span className='text-sm'>Like this video</span>}>
-                        <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item rounded-l-full'>
+                        <button onClick={() => handleLike(true)} className='btn btn-sm md:btn-md join-item btn-neutral rounded-l-full'>
                             <span className={`${isLiked === true && "text-info"}`}><AiFillLike size={20} /></span>
                             {viewsFormat(likeCount)}
                         </button>
                     </Tooltip>
                     <span className='join-item bg-base-200 flex items-center'>|</span>
                     <Tooltip arrow title={<span className='text-sm'>Unlike this video</span>}>
-                        <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full'>
+                        <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full btn-neutral'>
                             <span className={`${isLiked === false && "text-info"}`}><AiFillDislike size={20} /></span>
                         </button>
                     </Tooltip>
