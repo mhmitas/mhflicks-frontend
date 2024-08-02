@@ -78,7 +78,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
                     <img
                         src={avatar}
                         alt={fullName}
-                        className="rounded-full border-2 border-base-200 size-20 lg:size-24"
+                        className="rounded-full border-2 border-base-300 size-20 lg:size-24"
                     />
                 </figure>
                 <div className='space-y-3 flex-1'>

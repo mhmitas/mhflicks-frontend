@@ -23,7 +23,7 @@ const UserProfileHeader = () => {
 
     return (
         <section>
-            <div className='p-6 border rounded-lg border-base-200 relative bg-base-200 shadow-md'>
+            <div className='p-6 border rounded-lg border-base-300 relative bg-base-200 shadow-md'>
                 <figure className='aspect-w-16 aspect-h-9 rounded-lg overflow-hidden aspect-[16/3]'>
                     {user?.coverImage ? (
                         <img

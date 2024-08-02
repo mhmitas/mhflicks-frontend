@@ -24,7 +24,7 @@ const SignedInUserNavbarSection = () => {
             <button className='btn hidden sm:flex  btn-sm md:btn-md btn-ghost btn-circle'><FaBell size={20} /></button>
             <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full border border-base-200">
+                    <div className="w-10 rounded-full border border-base-300">
                         <img
                             alt="Tailwind CSS Navbar component"
                             src={user?.avatar} />

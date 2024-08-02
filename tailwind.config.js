@@ -37,8 +37,8 @@ export default {
           "warning-focus": "#e67e00",
           "warning-content": "#ffffff",
           "base-100": "#0f172a",
-          "base-200": "#1e293b",
-          "base-300": "#ebebeb",
+          "base-200": "#121b2f",
+          "base-300": "#1e293b",
           "base-content": "#ffffff",
         },
       }

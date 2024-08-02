@@ -21,8 +21,11 @@ const CommentsSection = ({ videoId }) => {
         queryKey: [`total-comment-count-${videoId}`],
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/video-comment-count/${videoId}`)
-            // console.log(data.data);
-            return data.data.totalComment
+            if (!data?.data) {
+                console.log(data.data);
+                return 0
+            }
+            return data?.data?.totalComment
         }
     })
 

@@ -9,21 +9,22 @@ const VideoCommentCard = ({ comment, user: currentUser, refetchComments, refetch
     const { comment: commentText, user: author, createdAt } = comment;
     const [collapseComment, setCollapseComment] = useState(true)
     const [showCommentUpdateBox, setShowCommentUpdateBox] = useState(false)
-    const [updateCommentText, setUpdateCommentText] = useState(commentText)
 
     const timestamp = moment(new Date(createdAt), "YYYYMMDD").fromNow();
 
-    async function handleUpdateComment() {
+    async function handleUpdateComment(e) {
+        e.preventDefault()
         if (!currentUser) return;
         try {
             const { data } = await axiosInstance.patch(`/user-actions/update-video-comment/${comment?._id}`, {
-                updatedComment: updateCommentText
+                updatedComment: e.target.comment.value
             })
             console.log(data.data);
             if (data?.success) {
                 toast("Comment Updated")
             }
             refetchComments()
+            refetchCommentCount()
             setShowCommentUpdateBox(false)
         } catch (error) {
             console.error("comment update error:", error);
@@ -41,6 +42,7 @@ const VideoCommentCard = ({ comment, user: currentUser, refetchComments, refetch
                 toast("Comment Removed")
             }
             refetchComments()
+            refetchCommentCount()
             setShowCommentUpdateBox(false)
         } catch (err) {
             console.error(err);
@@ -49,7 +51,7 @@ const VideoCommentCard = ({ comment, user: currentUser, refetchComments, refetch
     }
 
     return (
-        <div className="flex space-x-3 py-2 sm:py-4 border-b border-base-200 relative">
+        <div className="flex space-x-3 py-2 sm:py-4 border-b border-base-300 relative">
             <div className="avatar">
                 <div className="size-7 sm:size-10 rounded-full">
                     <img src={author?.avatar} alt="User Avatar" />
@@ -68,13 +70,13 @@ const VideoCommentCard = ({ comment, user: currentUser, refetchComments, refetch
                 </p>
                 {/* update comment form */}
                 {showCommentUpdateBox &&
-                    <section className="w-full mt-2">
-                        <textarea onChange={(e) => setUpdateCommentText(e.target.value)} value={updateCommentText} className="textarea textarea-bordered w-full" name="commentText"></textarea>
+                    <form onSubmit={handleUpdateComment} className="w-full mt-2">
+                        <textarea defaultValue={commentText} name="comment" className="textarea textarea-bordered w-full"></textarea>
                         <div className="flex gap-1 p-2 pb-0 justify-end">
                             <button onClick={() => setShowCommentUpdateBox(false)} type="button" className="btn btn-sm rounded-full">Cancel</button>
-                            <button onClick={handleUpdateComment} disabled={!updateCommentText} className="btn btn-sm rounded-full">Update</button>
+                            <button type="submit" className="btn btn-sm rounded-full">Update</button>
                         </div>
-                    </section>
+                    </form>
                 }
             </div>
             {/* take actions of comment by user */}

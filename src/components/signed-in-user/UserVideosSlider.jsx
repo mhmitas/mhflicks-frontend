@@ -6,7 +6,7 @@ import { viewsFormat } from '../../utils/viewsFormat';
 
 const UserVideosSlider = ({ title, videos, containerId }) => {
     return (
-        <div className='rounded-lg border border-base-200 p-4'>
+        <div className='rounded-lg border border-base-300 p-4'>
             <h3 className='card-title mb-2'>{title}</h3>
             <div className='relative'>
                 <div className='grid grid-cols-1'>
