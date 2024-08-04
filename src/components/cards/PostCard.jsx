@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
     const { title, content, author, media } = post;
 
     return (
-        <div className='p-3 md:p-5 bg-base-100 border-base-300 border rounded-lg space-y-3 md:space-y-4'>
+        <div className='p-4 md:p-5 bg-base-100 border-base-300 border rounded-lg space-y-3 md:space-y-4'>
             <div className='flex items-center justify-between gap-2'>
                 <div className='flex items-center gap-2'>
                     <figure className='size-9 sm:size-11 rounded-full overflow-hidden'><img src="/default-avatar.jpg" alt="" /></figure>

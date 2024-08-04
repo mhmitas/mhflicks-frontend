@@ -1,143 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PostCard from '../../components/cards/PostCard';
+import axios from 'axios';
+import { MdInfo } from 'react-icons/md';
 
 const Posts = () => {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios('/posts.json')
+            .then(res => setPosts(res.data))
+    }, [])
+
+    return (
+        <div className='flex flex-col justify-center items-center text-center min-h-[60vh]'>
+            <div className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-info'><MdInfo /></div>
+            <div>
+                <h3 className='text-2xl sm:text-3xl md:text-4xl font-semibold sm:mb-2'>Posts Page is currently unavailable</h3>
+                <h3>We will make this page available soon</h3>
+            </div>
+        </div>
+    )
+
     return (
         <section className='my-container w-full min-h-screen bg-slate-950 py-8 rounded-lg'>
             <div className='max-w-2xl mx-auto flex flex-col gap-6'>
-                {fakePosts.map((post, index) => <PostCard post={post} key={index} />)}
+                {posts.map((post, index) => <PostCard post={post} key={index} />)}
             </div>
         </section>
     );
 };
 
 export default Posts;
-
-
-export const fakePosts = [
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: `/assets/1.jpg`
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/2.jpeg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/3.jpeg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/4.jpeg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/5.jpeg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/6.jpeg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`,
-        media: '/assets/1.jpg'
-    },
-    {
-        author: {
-            fullName: "Lorem Ipsum",
-            username: '@lorem'
-        },
-        content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam officiis repellendus sunt error ex placeat pariatur aliquam expedita deleniti labore optio quibusdam, tempore omnis accusantium eos ducimus voluptatibus saepe delectus debitis ipsam iure officia voluptatum! Ratione facere cum dignissimos distinctio libero amet cumque magni, fugiat, a similique earum at. Labore, error. Laboriosam reprehenderit delectus eaque voluptate facere earum iusto assumenda ex sint eveniet rerum ipsum excepturi porro odio nisi animi corporis quidem, accusamus ut, molestias tenetur incidunt! Ipsam temporibus, explicabo quaerat a tempora aperiam ipsum nesciunt tenetur nemo mollitia vero sapiente quo voluptatibus cupiditate ut, praesentium reprehenderit earum soluta minima!`,
-        title: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque nulla debitis, fugiat asperiores.`
-    },
-]

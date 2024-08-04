@@ -164,7 +164,7 @@ const LikeSubscribe = ({ id }) => {
                             {viewsFormat(likeCount)}
                         </button>
                     </Tooltip>
-                    <span className='join-item bg-base-200 flex items-center'>|</span>
+                    <span className='join-item flex items-center bg-neutral'>|</span>
                     <Tooltip arrow title={<span className='text-sm'>Unlike this video</span>}>
                         <button onClick={() => handleLike(false)} className='btn btn-sm md:btn-md join-item rounded-r-full btn-neutral'>
                             <span className={`${isLiked === false && "text-info"}`}><AiFillDislike size={20} /></span>
