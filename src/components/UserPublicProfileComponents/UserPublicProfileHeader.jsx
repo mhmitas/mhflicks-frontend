@@ -106,7 +106,7 @@ export default UserPublicProfileHeader;
 function SubscribeButton({ subscribed, handleSubscribe }) {
     return (
         <Tooltip title={<span className='text-sm'>{subscribed ? "Click to unsubscribe" : "Subscribe"}</span>}>
-            <button onClick={handleSubscribe} className={`btn btn-sm md:btn-md ${!subscribed && "btn-primary"} rounded-full md:text-lg`}>{subscribed ? "Subscribed" : "Subscribe"}</button>
+            <button onClick={handleSubscribe} className={`btn btn-sm ${!subscribed ? "btn-primary" : "btn-neutral"} rounded-full`}>{subscribed ? "Subscribed" : "Subscribe"}</button>
         </Tooltip>
     )
 }

@@ -1,16 +1,77 @@
 import React from 'react';
-import { MdInfo } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
+import useAuth from '../../hooks/useAuth';
+import VideoCard from '../../components/cards/VideoCard';
+import { axiosInstance } from '../../hooks/useAxios';
 
 const SubscriptionsPage = () => {
+    const { user, loading: authLoading } = useAuth()
+
+    const { data: videos = [], isLoading, refetch, error } = useQuery({
+        queryKey: ["all-subscribed-channels-videos"],
+        enabled: () => !!user && !authLoading,
+        queryFn: async () => {
+            const { data } = await axiosInstance(`/users/subscription-videos/${user?._id}?limit=8`)
+            // console.log(data.data);
+            return data.data
+        }
+    })
+
+    if (isLoading || authLoading) {
+        return <LoadingSkeletonAllVideos />
+    }
+    // if user not exits return
+    if (!user) {
+        return <SignInToContinue Icon={AiOutlineLike} title='Liked videos' message={`Liked videos isn't viewable when you're signed out.`} />
+    }
+    if (error) {
+        console.log(error);
+    }
+
     return (
-        <div className='flex flex-col justify-center items-center text-center min-h-[60vh]'>
-            <div className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-info'><MdInfo /></div>
-            <div>
-                <h3 className='text-2xl sm:text-3xl md:text-4xl font-semibold sm:mb-2'>Subscription Page is currently unavailable</h3>
-                <h3>We will make this page available soon</h3>
+        <section className='my-container'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto w-full h-full flex-1'>
+                {videos.map((video, index) => <VideoCard video={video} key={index} />)}
             </div>
-        </div>
+        </section>
     );
 };
 
 export default SubscriptionsPage;
+
+
+
+export function LoadingSkeletonAllVideos() {
+    return (
+        <section className='my-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mx-auto w-full h-full flex-1'>
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+        </section>
+    )
+}
+
+function Skeleton() {
+    return (
+        <div className='flex flex-col'>
+            <div className='skeleton bg-base-200 aspect-video rounded-lg'></div>
+            <div className='flex gap-3 font-semibold items-center pt-2'>
+                {/* channel logo */}
+                <div className='rounded-full w-10 h-10 skeleton bg-base-200'></div>
+                <div className='flex flex-col gap-1 flex-1 *:rounded-sm'>
+                    <div className='skeleton bg-base-200 h-4'></div>
+                    <div className='skeleton bg-base-200 h-4 w-1/2'></div>
+                </div>
+            </div>
+        </div>
+    )
+}

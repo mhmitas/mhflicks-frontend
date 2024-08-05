@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import HomeVideosSection from '../../components/root-layout-components/HomeVideosSection';
 
 const Home = () => {
