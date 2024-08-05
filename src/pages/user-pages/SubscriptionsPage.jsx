@@ -11,7 +11,7 @@ const SubscriptionsPage = () => {
         queryKey: ["all-subscribed-channels-videos"],
         enabled: () => !!user && !authLoading,
         queryFn: async () => {
-            const { data } = await axiosInstance(`/users/subscription-videos/${user?._id}?limit=8`)
+            const { data } = await axiosInstance(`/videos/subscription-videos/${user?._id}?limit=8`)
             // console.log(data.data);
             return data.data
         }

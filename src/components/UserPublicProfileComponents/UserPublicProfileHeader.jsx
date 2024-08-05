@@ -6,16 +6,18 @@ import askForSignInModal from '../modals/ask/AskForSignInModal';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 import askModal from '../modals/ask/askModal';
+import LoadingSpinner from '../common/LoadingSpinner';
 
 const UserPublicProfileHeader = ({ username, channelId }) => {
     const navigate = useNavigate()
     const [subscribed, setSubscribed] = useState(false)
     const { user: currentUser, loading: authLoading } = useAuth();
+    console.log(currentUser);
 
     const { data: profileData = {}, isLoading, error, refetch } = useQuery({
         queryKey: [`user-public-profile-${username}`, channelId],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/users/public-profile/${channelId}${currentUser && `/?currentUser=${currentUser?._id}`}`)
+            const { data } = await axiosInstance(`/users/public-profile/${channelId}/?currentUser=${currentUser ? currentUser : ""}`)
             // console.log(data.data);
             setSubscribed(data.data.isSubscribed)
             return data.data
@@ -54,7 +56,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
     }
 
     if (isLoading || authLoading) {
-        return <span>Loading...</span>
+        return <LoadingSpinner />
     }
 
     if (error) {

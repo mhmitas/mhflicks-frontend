@@ -61,7 +61,7 @@ const UploadVideoSection = () => {
 
     return (
         <div>
-            <div className='bg-base-200 p-8 rounded-lg flex items-center justify-center'>
+            <div className='bg-base-200 p-8 rounded-lg flex items-center justify-center border border-base-300'>
                 <button onClick={() => setShowModal(true)} className='btn btn-secondary text-base'> <GoUpload size={20} />Upload Video</button>
             </div>
             {showModal &&

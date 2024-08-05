@@ -10,6 +10,7 @@ import UserProfilePageContentTab from '../../components/tabs/UserProfilePageCont
 const UserProfilePage = () => {
     const [videos, setVideos] = useState([])
     const { user, loading, setUser } = useAuth()
+    const [currentTab, setCurrentTab] = useState('videos')
 
     useEffect(() => {
         axios("/videos.json")
@@ -20,7 +21,7 @@ const UserProfilePage = () => {
 
     return (
         <section className='my-container *:mb-10'>
-            <UserProfileHeader />
+            <UserProfileHeader user={user} />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <UploadVideoSection />
                 <UploadPostSection />
@@ -28,14 +29,13 @@ const UserProfilePage = () => {
             <div>
                 <UserProfilePageContentTab />
             </div>
-            {/* slides */}
-            <>
-                <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
-                <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
-            </>
         </section>
     );
 };
 
 export default UserProfilePage;
 
+{/* <>
+    <UserVideosSlider title={"Watch History"} videos={videos} containerId="watch-history-slider" />
+    <UserVideosSlider title={"Liked Videos"} videos={videos?.slice(4)} containerId="liked-video-slider" />
+</> */}

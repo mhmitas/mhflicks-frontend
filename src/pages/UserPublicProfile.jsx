@@ -15,6 +15,7 @@ const UserPublicProfile = () => {
         axiosInstance(`/users/is-exists/${username.split("@")[1]}`)
             .then(res => {
                 setChannelId(res.data?.data?._id)
+                // console.log(res.data?.data?._id)
                 setFinding(false)
             })
             .catch(err => {
@@ -31,7 +32,7 @@ const UserPublicProfile = () => {
     }
 
     return (
-        <section className='my-container'>
+        <section className='my-container relative'>
             <UserPublicProfileHeader username={username} channelId={channelId} />
             <div className=''>
                 <nav role="tablist" className="tabs tabs-sm lg:tabs-md tabs-boxed w-max mt-4 sm:mt-6 mb-2">
