@@ -29,7 +29,7 @@ const UserProfileHeader = ({ currentUser }) => {
 
     return (
         <section>
-            <div className='p-6 border rounded-lg border-base-300 relative bg-base-200 shadow-md space-y-4'>
+            <div className='p-3 sm:p-5 md:p-5 border rounded-lg border-base-300 relative bg-base-200 shadow-md space-y-2 sm:space-y-4'>
                 <figure className='aspect-w-16 aspect-h-9 rounded-lg overflow-hidden aspect-[16/3]'>
                     {userData?.coverImage ? (
                         <img
@@ -42,12 +42,12 @@ const UserProfileHeader = ({ currentUser }) => {
                     )}
                 </figure>
                 <div className='flex flex-col sm:flex-row gap-3 md:gap-6 items-center'>
-                    <figure className='size-24 md:size-28 rounded-full overflow-hidden border-2 border-info'>
+                    <figure className='size-20 md:size-28 rounded-full overflow-hidden border-2 border-info'>
                         <img className='w-full h-full object-cover' src={userData?.avatar} alt={userData?.fullName} />
                     </figure>
                     <div className='flex flex-col items-center sm:items-start flex-1'>
                         <h1 className='text-2xl md:text-3xl xl:text-4xl font-bold mb-1'>{userData?.fullName}</h1>
-                        <div className='flex flex-wrap items-center justify-center sm:justify-start gap-2 lg:text-lg text-color-gray'>
+                        <div className='flex flex-wrap items-center justify-center sm:justify-start gap-2 text-sm sm:text-base lg:text-lg text-color-gray leading-3'>
                             <span>@{userData?.username}</span>
                             <span>•</span>
                             <span>{viewsFormat(userData?.stats?.subscribers)} Subscribers</span>
@@ -56,11 +56,11 @@ const UserProfileHeader = ({ currentUser }) => {
                         </div>
                     </div>
                 </div>
-                <h3>
+                <h3 className='text-sm md:text-base'>
                     <span className={`${expandAbout || 'line-clamp-1'}`}>
                         {userData?.about || "About: Empty (Write something about you and update your profile)"}
                     </span>
-                    <span onClick={() => setExpandAbout(!expandAbout)} className='link text-base font-normal'>
+                    <span onClick={() => setExpandAbout(!expandAbout)} className='font-semibold'>
                         {expandAbout ? " Show less" : "..Show more"}
                     </span>
                 </h3>

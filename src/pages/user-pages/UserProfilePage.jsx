@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import UserProfileHeader from '../../components/signed-in-user/UserProfilePageHeader';
 import axios from 'axios';
-import UserVideosSlider from '../../components/signed-in-user/UserVideosSlider';
 import useAuth from '../../hooks/useAuth';
 import UploadVideoSection from '../../components/signed-in-user/UploadVideoSection';
 import UploadPostSection from '../../components/signed-in-user/UploadPostSection';
 import UserProfilePageContentTab from '../../components/tabs/UserProfilePageContentTab';
+import UserProfileVideosSection from '../../components/signed-in-user/UserProfileVideosSection';
+import UserProfilePostsSection from '../../components/signed-in-user/UserProfilePostsSection';
 
 const UserProfilePage = () => {
-    const { user, loading, setUser } = useAuth()
+    const { user } = useAuth()
     const [currentTab, setCurrentTab] = useState('videos')
 
+    console.log(user);
 
     return (
         <section className='my-container *:mb-10'>
@@ -20,7 +22,10 @@ const UserProfilePage = () => {
                 <UploadPostSection />
             </div>
             <div>
-                <UserProfilePageContentTab />
+                <UserProfilePageContentTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
+                <div className="divider my-2 p-0"></div>
+                {currentTab === "videos" && <UserProfileVideosSection user={user} />}
+                {currentTab === "posts" && <UserProfilePostsSection />}
             </div>
         </section>
     );

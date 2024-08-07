@@ -18,7 +18,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
         queryKey: [`user-public-profile-${username}`, channelId, currentUser],
         queryFn: async () => {
             const { data } = await axiosInstance(`/users/public-profile/${channelId}/?currentUser=${currentUser ? currentUser?._id : ""}`)
-            console.log(data.data);
+            // console.log(data.data);
             setSubscribed(data.data?.isSubscribed)
             return data.data
         }
