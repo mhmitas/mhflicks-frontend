@@ -35,7 +35,7 @@ const UserPublicProfile = () => {
         <section className='my-container relative'>
             <UserPublicProfileHeader username={username} channelId={channelId} />
             <div className=''>
-                <nav role="tablist" className="tabs tabs-sm lg:tabs-md tabs-boxed w-max mt-4 sm:mt-6 mb-2">
+                <nav role="tablist" className="tabs tabs-sm lg:tabs-md tabs-boxed w-max mt-4 sm:mt-6 mb-2 border border-base-300">
                     <TabComponent path={`/profile/${username}`} name="Videos" />
                     <TabComponent name="Posts" path={`/profile/${username}/posts`} />
                 </nav>
@@ -56,7 +56,7 @@ const TabComponent = ({ name, path }) => {
             role="tab"
             end={true}
             className={({ isActive }) => {
-                return `tab tab-1 ${isActive && "bg-info"}`
+                return `tab ${isActive && "bg-info"}`
             }}
         >
             {name}

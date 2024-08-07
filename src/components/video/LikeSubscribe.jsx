@@ -8,6 +8,7 @@ import useAuth from '../../hooks/useAuth';
 import askModal from '../modals/ask/askModal';
 import askForSignInModal from '../modals/ask/AskForSignInModal';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { Tooltip } from '@mui/material';
 
 const LikeSubscribe = ({ id }) => {
@@ -187,7 +188,10 @@ function DescriptionSection({ videoData }) {
     return (
         <div className='bg-base-200 p-3 rounded-lg'>
             <p className='font-semibold'>{uploaded}</p>
-            <h1 onClick={(e) => { setCollapseDescription(!collapseDescription) }} className={`text-sm sm:text-base cursor-default ${collapseDescription ? "line-clamp-5 md:line-clamp-[8] lg:line-clamp-[10]" : ""}`}>{videoData?.description}</h1>
+            <h1 className={`text-sm sm:text-base cursor-default ${collapseDescription ? "line-clamp-3 md:line-clamp-4 lg:line-clamp-6" : ""}`}>{videoData?.description}</h1>
+            <div className='text-center'>
+                <Tooltip title={<span className='text-sm'>{collapseDescription ? "Show More" : "Show Less"}</span>}><button className='btn btn-sm btn-square text-base font-bold' onClick={(e) => { setCollapseDescription(!collapseDescription) }}>{collapseDescription ? <GoChevronDown /> : <GoChevronUp />}</button></Tooltip>
+            </div>
         </div>
     )
 }
