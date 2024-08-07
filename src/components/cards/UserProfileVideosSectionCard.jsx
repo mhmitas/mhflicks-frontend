@@ -42,7 +42,7 @@ const UserProfileVideosSectionCard = ({ video }) => {
                     </div>
                 </div>
             </div>
-            {showDeleteModal && <DeleteModal setShowDeleteModal={setShowDeleteModal} />}
+            {showDeleteModal && <DeleteModal setShowDeleteModal={setShowDeleteModal} title={title} />}
         </div>
     )
 };
@@ -50,14 +50,17 @@ const UserProfileVideosSectionCard = ({ video }) => {
 export default UserProfileVideosSectionCard;
 
 
-function DeleteModal({ setShowDeleteModal, videoId }) {
+function DeleteModal({ setShowDeleteModal, videoId, title }) {
     const [deleteText, setDeleteText] = useState("")
 
     return (
-        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50'>
-            <div className='max-h-[90vh] max-w-md w-full bg-base-100 p-6 rounded-lg'>
-                <div className='text-center text-lg text-error flex items-center gap-1'><GoAlert />Delete Video</div>
-                <h3 className='mb-3'>Are you sure? You want to delete this video. Once deleted it cannot be recovered.</h3>
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50'>
+            <div className='max-h-[90vh] max-w-md w-full bg-base-100 p-6 rounded-lg mx-4'>
+                <div className='text-center text-lg text-error flex items-center gap-1'><GoAlert />Delete video.</div>
+                <h3 className='mb-3'>
+                    Are you sure? You want to delete <span className='font-semibold'>"{title?.slice(0, 36)}..."</span>.
+                    Once deleted it cannot be recovered.
+                </h3>
                 <div className='space-y-1 mb-3'>
                     <h3>Please write "<span className='font-semibold'>delete video</span>" to delete.</h3>
                     <input

@@ -11,8 +11,6 @@ const UserProfilePage = () => {
     const { user } = useAuth()
     const [currentTab, setCurrentTab] = useState('videos')
 
-    console.log(user);
-
     return (
         <section className='my-container *:mb-10'>
             <UserProfileHeader currentUser={user} />
