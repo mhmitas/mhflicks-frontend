@@ -25,8 +25,6 @@ const UserProfileHeader = ({ currentUser }) => {
     }
     if (userDataError) console.error(userDataError);
 
-    console.log(userData);
-
     return (
         <section>
             <div className='p-3 sm:p-5 md:p-5 border rounded-lg border-base-300 relative bg-base-200 shadow-md space-y-2 sm:space-y-4'>

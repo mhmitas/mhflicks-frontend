@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { GoAlert } from "react-icons/go";
+import EditVideoModal from '../modals/EditVideoModal';
 
 
 const UserProfileVideosSectionCard = ({ video }) => {
     const { likes, createdAt, thumbnail, title, duration } = video;
+    const [showEditModal, setShowEditModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     const timestamps = moment(new Date(createdAt), "YYYYMMDD").fromNow();
@@ -37,12 +39,13 @@ const UserProfileVideosSectionCard = ({ video }) => {
                         <span>{timestamps}</span>
                     </div>
                     <div className="flex gap-2">
-                        <button title='Edit' className='btn btn-sm rounded btn-neutral'>Edit</button>
+                        <button onClick={() => setShowEditModal(true)} title='Edit' className='btn btn-sm rounded btn-neutral'>Edit</button>
                         <button onClick={() => setShowDeleteModal(true)} title='Delete' className='btn btn-sm rounded btn-neutral'>Delete</button>
                     </div>
                 </div>
             </div>
             {showDeleteModal && <DeleteModal setShowDeleteModal={setShowDeleteModal} title={title} />}
+            {showEditModal && <EditVideoModal videoId={video._id} setShowModal={setShowEditModal} />}
         </div>
     )
 };
