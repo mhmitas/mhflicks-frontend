@@ -15,7 +15,7 @@ const LikedVideoPage = () => {
         queryKey: [`liked-videos-${user?._id}`, user?._id],
         enabled: () => !!user && !authLoading,
         queryFn: async () => {
-            const { data } = await axiosInstance(`/users/liked-videos/${user?._id}`)
+            const { data } = await axiosInstance(`/videos/liked-videos/${user?._id}`)
             // console.log(data.data);
             return data.data
         }

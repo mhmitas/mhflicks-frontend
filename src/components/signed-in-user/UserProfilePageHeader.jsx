@@ -7,14 +7,14 @@ import { axiosInstance } from '../../hooks/useAxios';
 import LoadingSpinner from '../common/LoadingSpinner';
 import { viewsFormat } from '../../utils/viewsFormat';
 
-const UserProfileHeader = ({ user }) => {
+const UserProfileHeader = ({ currentUser }) => {
     const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
 
     const { data: userData, isLoading: isUserDataLoading, error: userDataError, refetch: refetchUserData } = useQuery({
         queryKey: ['user-profile-data-YouPage'],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/users/user-data/${user?._id}`)
-            console.log(data.data);
+            const { data } = await axiosInstance(`/users/user-data/${currentUser?._id}`)
+            // console.log(data.data);
             return data.data
         }
     })
@@ -24,10 +24,11 @@ const UserProfileHeader = ({ user }) => {
     }
     if (userDataError) console.error(userDataError);
 
+    console.log(userData);
 
     return (
         <section>
-            <div className='p-6 border rounded-lg border-base-300 relative bg-base-200 shadow-md'>
+            <div className='p-6 border rounded-lg border-base-300 relative bg-base-200 shadow-md space-y-4'>
                 <figure className='aspect-w-16 aspect-h-9 rounded-lg overflow-hidden aspect-[16/3]'>
                     {userData?.coverImage ? (
                         <img
@@ -39,7 +40,7 @@ const UserProfileHeader = ({ user }) => {
                         <div className='w-full h-full bg-gradient-to-r from-rose-900 to-blue-900'></div>
                     )}
                 </figure>
-                <div className='flex flex-col sm:flex-row gap-3 md:gap-6 items-center mt-4'>
+                <div className='flex flex-col sm:flex-row gap-3 md:gap-6 items-center'>
                     <figure className='size-24 md:size-28 rounded-full overflow-hidden border-2 border-info'>
                         <img className='w-full h-full object-cover' src={userData?.avatar} alt={userData?.fullName} />
                     </figure>
@@ -54,7 +55,8 @@ const UserProfileHeader = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <Tooltip arrow title={<span className='text-base'>Update Profile</span>}>
+                <h3>{userData?.about || "About: Empty (Write something about you and update your profile)"}</h3>
+                <Tooltip arrow title={<span className='text-sm'>Update Profile</span>}>
                     <button
                         onClick={() => setShowUpdateProfileModal(true)}
                         className='btn btn-xs btn-neutral absolute bottom-4 right-4'
@@ -64,7 +66,7 @@ const UserProfileHeader = ({ user }) => {
                 </Tooltip>
             </div>
 
-            {showUpdateProfileModal && <UpdateProfileModal user={user} setShowModal={setShowUpdateProfileModal} refetch={refetchUserData} />}
+            {showUpdateProfileModal && <UpdateProfileModal userData={userData} setShowModal={setShowUpdateProfileModal} refetch={refetchUserData} />}
         </section>
     );
 };

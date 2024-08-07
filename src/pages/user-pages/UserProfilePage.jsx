@@ -8,20 +8,13 @@ import UploadPostSection from '../../components/signed-in-user/UploadPostSection
 import UserProfilePageContentTab from '../../components/tabs/UserProfilePageContentTab';
 
 const UserProfilePage = () => {
-    const [videos, setVideos] = useState([])
     const { user, loading, setUser } = useAuth()
     const [currentTab, setCurrentTab] = useState('videos')
 
-    useEffect(() => {
-        axios("/videos.json")
-            .then(res => {
-                setVideos(res.data)
-            })
-    }, [])
 
     return (
         <section className='my-container *:mb-10'>
-            <UserProfileHeader user={user} />
+            <UserProfileHeader currentUser={user} />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <UploadVideoSection />
                 <UploadPostSection />

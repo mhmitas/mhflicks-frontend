@@ -9,21 +9,21 @@ import askModal from '../modals/ask/askModal';
 import LoadingSpinner from '../common/LoadingSpinner';
 
 const UserPublicProfileHeader = ({ username, channelId }) => {
+    const [expandAbout, setExpandAbout] = useState(false)
     const navigate = useNavigate()
     const [subscribed, setSubscribed] = useState(false)
     const { user: currentUser, loading: authLoading } = useAuth();
-    console.log(currentUser);
 
     const { data: profileData = {}, isLoading, error, refetch } = useQuery({
-        queryKey: [`user-public-profile-${username}`, channelId],
+        queryKey: [`user-public-profile-${username}`, channelId, currentUser],
         queryFn: async () => {
-            const { data } = await axiosInstance(`/users/public-profile/${channelId}/?currentUser=${currentUser ? currentUser : ""}`)
-            // console.log(data.data);
-            setSubscribed(data.data.isSubscribed)
+            const { data } = await axiosInstance(`/users/public-profile/${channelId}/?currentUser=${currentUser ? currentUser?._id : ""}`)
+            console.log(data.data);
+            setSubscribed(data.data?.isSubscribed)
             return data.data
         }
     })
-    const { avatar, coverImage, fullName, stats, isSubscribed, _id, username: dbUsername } = profileData;
+    const { avatar, coverImage, fullName, stats, isSubscribed, _id, username: dbUsername, about } = profileData;
 
     async function handleSubscribe() {
         if (!currentUser) {
@@ -36,7 +36,9 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
         }
         if (isSubscribed) {
             const ask = await askModal("Do you want to unsubscribe")
-            if (!ask) return
+            if (!ask) {
+                return
+            }
             setSubscribed(false)
         } else {
             setSubscribed(true)
@@ -65,7 +67,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
 
     return (
         <header className="space-y-4 sm:space-y-6">
-            <figure className='aspect-[16/2] flex items-center rounded-lg overflow-hidden'>
+            <figure className='aspect-[16/3] flex items-center rounded-lg overflow-hidden'>
                 {coverImage ?
                     <img
                         src={coverImage}
@@ -83,7 +85,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
                         className="rounded-full border-2 border-base-300 size-20 lg:size-24"
                     />
                 </figure>
-                <div className='space-y-3 flex-1'>
+                <div className='space-y-4 flex-1'>
                     <div>
                         <h1 className="text-2xl md:text-3xl font-bold">{fullName}</h1>
                         <div className='flex flex-wrap gap-2 text-color-gray'>
@@ -92,9 +94,11 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
                             <span className="">{stats?.videos} videos</span>
                             {/* <span className="">▪9 posts</span> */}
                         </div>
-                        <p className="line-clamp-2">
-                            It's not what you look at that matters, it's what you see. - David Thoreau
-                        </p>
+                        {about &&
+                            <p>
+                                <span className={`${expandAbout || 'line-clamp-1'}`}>{about}</span><span onClick={() => setExpandAbout(!expandAbout)} className='link text-base font-normal'>{expandAbout ? " Show less" : "..Show more"}</span>
+                            </p>
+                        }
                     </div>
                     <SubscribeButton subscribed={subscribed} handleSubscribe={handleSubscribe} />
                 </div>

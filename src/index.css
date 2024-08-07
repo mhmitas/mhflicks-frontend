@@ -24,3 +24,7 @@
 .tab-1 {
     @apply px-6 sm:px-10 lg:text-lg text-base lg:font-semibold
 }
+
+.link-text {
+    @apply text-blue-500
+}

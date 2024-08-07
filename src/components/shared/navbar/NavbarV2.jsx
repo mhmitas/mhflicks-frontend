@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import BrandLogo2 from '../../Logos/BrandLogo2';
 
-// currently using NavbarV2
 const NavbarV2 = ({ sidebarOpen, setSidebarOpen }) => {
     const { user, loading } = useAuth()
 

@@ -133,7 +133,7 @@ const LikeSubscribe = ({ id }) => {
                         <Link to={`/profile/@${channel?.channelUsername}`}><figure><img src={channel?.channelAvatar} alt="" className='size-10 sm:size-12 rounded-full' /></figure></Link>
                         <div className=''>
                             {/* channel name */}
-                            <Link to={`/profile/@${channel?.channelUsername}`}><h1 className='line-clamp-1 text-lg md:text-xl font-semibold'>{channel?.channelName}</h1></Link>
+                            <Tooltip arrow title={<span className='text-sm'>{channel?.channelName}</span>}><Link to={`/profile/@${channel?.channelUsername}`}><h1 className='line-clamp-1 text-lg md:text-xl font-semibold'>{channel?.channelName}</h1></Link></Tooltip>
                             {/* channel's subscribers */}
                             <h1 className='text-color-gray text-xm sm:text-sm font-semibold'>{subscriber} subscriber{subscriber > 0 && "s"}</h1>
                         </div>
@@ -143,7 +143,7 @@ const LikeSubscribe = ({ id }) => {
                             <button
                                 onClick={handleSubscribe}
                                 className={
-                                    `btn btn-sm md:btn-md md:text-lg ${isSubscribed ?
+                                    `btn btn-sm md:btn-md ${isSubscribed ?
                                         "btn-neutral" :
                                         "btn-primary"
                                     } rounded-full`

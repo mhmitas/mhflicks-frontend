@@ -14,6 +14,7 @@ const Root = () => {
     return (
         <SidebarContext.Provider value={value}>
             <div className='min-h-screen'>
+                {/* // currently using NavbarV2 */}
                 <NavbarV2 sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <div className='pt-16 flex'>
                     <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
