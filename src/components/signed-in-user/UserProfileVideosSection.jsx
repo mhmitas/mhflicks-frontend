@@ -9,7 +9,7 @@ const UserProfileVideosSection = ({ user }) => {
         queryKey: ['my-videos', user?._id],
         queryFn: async () => {
             const { data } = await axiosInstance(`/videos/get-my-videos/${user?.username}`)
-            console.log(data.data);
+            // console.log(data.data);
             return data.data
         }
     })

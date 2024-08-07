@@ -1,10 +1,13 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiFillLike } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { GoAlert } from "react-icons/go";
+
 
 const UserProfileVideosSectionCard = ({ video }) => {
     const { likes, createdAt, thumbnail, title, duration } = video;
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     const timestamps = moment(new Date(createdAt), "YYYYMMDD").fromNow();
 
@@ -35,12 +38,44 @@ const UserProfileVideosSectionCard = ({ video }) => {
                     </div>
                     <div className="flex gap-2">
                         <button title='Edit' className='btn btn-sm rounded btn-neutral'>Edit</button>
-                        <button title='Delete' className='btn btn-sm rounded btn-neutral hover:btn-error'>Delete</button>
+                        <button onClick={() => setShowDeleteModal(true)} title='Delete' className='btn btn-sm rounded btn-neutral'>Delete</button>
                     </div>
                 </div>
             </div>
+            {showDeleteModal && <DeleteModal setShowDeleteModal={setShowDeleteModal} />}
         </div>
     )
 };
 
 export default UserProfileVideosSectionCard;
+
+
+function DeleteModal({ setShowDeleteModal, videoId }) {
+    const [deleteText, setDeleteText] = useState("")
+
+    return (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50'>
+            <div className='max-h-[90vh] max-w-md w-full bg-base-100 p-6 rounded-lg'>
+                <div className='text-center text-lg text-error flex items-center gap-1'><GoAlert />Delete Video</div>
+                <h3 className='mb-3'>Are you sure? You want to delete this video. Once deleted it cannot be recovered.</h3>
+                <div className='space-y-1 mb-3'>
+                    <h3>Please write "<span className='font-semibold'>delete video</span>" to delete.</h3>
+                    <input
+                        onChange={(e) => setDeleteText(e.target.value)}
+                        value={deleteText}
+                        type="text"
+                        className='input input-bordered w-full'
+                    />
+                </div>
+                <div className="flex justify-end space-x-4">
+                    <button onClick={() => setShowDeleteModal(false)} className="btn btn-neutral btn-sm rounded">
+                        Cancel
+                    </button>
+                    <button disabled={!(deleteText === "delete video")} className="btn btn-error btn-sm rounded">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
