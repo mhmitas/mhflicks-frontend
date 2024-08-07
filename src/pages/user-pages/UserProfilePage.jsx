@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import UserProfileHeader from '../../components/signed-in-user/UserProfilePageHeader';
-import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import UploadVideoSection from '../../components/signed-in-user/UploadVideoSection';
 import UploadPostSection from '../../components/signed-in-user/UploadPostSection';
