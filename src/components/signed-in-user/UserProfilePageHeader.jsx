@@ -8,6 +8,7 @@ import LoadingSpinner from '../common/LoadingSpinner';
 import { viewsFormat } from '../../utils/viewsFormat';
 
 const UserProfileHeader = ({ currentUser }) => {
+    const [expandAbout, setExpandAbout] = useState(false)
     const [showUpdateProfileModal, setShowUpdateProfileModal] = useState(false);
 
     const { data: userData, isLoading: isUserDataLoading, error: userDataError, refetch: refetchUserData } = useQuery({
@@ -55,11 +56,18 @@ const UserProfileHeader = ({ currentUser }) => {
                         </div>
                     </div>
                 </div>
-                <h3>{userData?.about || "About: Empty (Write something about you and update your profile)"}</h3>
+                <h3>
+                    <span className={`${expandAbout || 'line-clamp-1'}`}>
+                        {userData?.about || "About: Empty (Write something about you and update your profile)"}
+                    </span>
+                    <span onClick={() => setExpandAbout(!expandAbout)} className='link text-base font-normal'>
+                        {expandAbout ? " Show less" : "..Show more"}
+                    </span>
+                </h3>
                 <Tooltip arrow title={<span className='text-sm'>Update Profile</span>}>
                     <button
                         onClick={() => setShowUpdateProfileModal(true)}
-                        className='btn btn-xs btn-neutral absolute bottom-4 right-4'
+                        className='btn btn-sm btn-square btn-neutral absolute bottom-2 right-2 text-base'
                     >
                         <FaEdit />
                     </button>

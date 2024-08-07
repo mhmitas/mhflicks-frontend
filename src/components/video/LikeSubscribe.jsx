@@ -95,7 +95,7 @@ const LikeSubscribe = ({ id }) => {
             }
         }
         if (isSubscribed) {
-            const ask = await askModal("Do you want to unsubscribe")
+            const ask = await askModal("Do you want to unsubscribe?")
             if (!ask) return
             setIsSubscribed(false)
         } else {

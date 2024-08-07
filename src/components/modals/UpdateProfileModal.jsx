@@ -43,7 +43,7 @@ function UpdateProfileModal({ userData, setShowModal, refetch }) {
                 </div>
                 <div className='form-control'>
                     <label className='label label-text'>About</label>
-                    <textarea {...register("about")} defaultValue={userData?.about} type="text" className='textarea textarea-bordered mb-4' />
+                    <textarea {...register("about")} defaultValue={userData?.about} type="text" rows={4} className='textarea textarea-bordered mb-4' />
                 </div>
                 <div className='border border-base-300 p-4 rounded-lg'>
                     <h3 className='text-center w-full'>Profile Image</h3>

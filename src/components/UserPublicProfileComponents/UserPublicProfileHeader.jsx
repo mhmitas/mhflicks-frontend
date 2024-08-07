@@ -35,7 +35,7 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
             }
         }
         if (isSubscribed) {
-            const ask = await askModal("Do you want to unsubscribe")
+            const ask = await askModal("Do you want to unsubscribe?")
             if (!ask) {
                 return
             }
@@ -77,31 +77,33 @@ const UserPublicProfileHeader = ({ username, channelId }) => {
                     <div className='w-full h-full bg-gradient-to-r from-rose-900 to-blue-900'></div>
                 }
             </figure>
-            <div className="flex gap-4">
-                <figure>
-                    <img
-                        src={avatar}
-                        alt={fullName}
-                        className="rounded-full border-2 border-base-300 size-20 lg:size-24"
-                    />
-                </figure>
-                <div className='space-y-4 flex-1'>
-                    <div>
-                        <h1 className="text-2xl md:text-3xl font-bold">{fullName}</h1>
-                        <div className='flex flex-wrap gap-2 text-color-gray'>
-                            <span className="">@{dbUsername}</span>▪
-                            <span className="">{stats?.subscribers} subscribers</span>▪
-                            <span className="">{stats?.videos} videos</span>
-                            {/* <span className="">▪9 posts</span> */}
+            <div>
+                <div className="flex gap-4">
+                    <figure>
+                        <img
+                            src={avatar}
+                            alt={fullName}
+                            className="rounded-full border-2 border-base-300 size-20 lg:size-24"
+                        />
+                    </figure>
+                    <div className='space-y-1 mb-2 flex-1'>
+                        <div>
+                            <h1 className="text-2xl md:text-3xl font-bold">{fullName}</h1>
+                            <div className='flex flex-wrap gap-2 text-color-gray'>
+                                <span className="">@{dbUsername}</span>▪
+                                <span className="">{stats?.subscribers} subscribers</span>▪
+                                <span className="">{stats?.videos} videos</span>
+                                {/* <span className="">▪9 posts</span> */}
+                            </div>
                         </div>
-                        {about &&
-                            <p>
-                                <span className={`${expandAbout || 'line-clamp-1'}`}>{about}</span><span onClick={() => setExpandAbout(!expandAbout)} className='link text-base font-normal'>{expandAbout ? " Show less" : "..Show more"}</span>
-                            </p>
-                        }
+                        <SubscribeButton subscribed={subscribed} handleSubscribe={handleSubscribe} />
                     </div>
-                    <SubscribeButton subscribed={subscribed} handleSubscribe={handleSubscribe} />
                 </div>
+                {about &&
+                    <p>
+                        <span className={`${expandAbout || 'line-clamp-1'}`}>{about}</span><span onClick={() => setExpandAbout(!expandAbout)} className='link text-base font-normal'>{expandAbout ? " Show less" : "..Show more"}</span>
+                    </p>
+                }
             </div>
         </header>
     );
