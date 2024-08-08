@@ -28,3 +28,26 @@
 .link-text {
     @apply text-blue-500
 }
+
+
+.gpt-loading-dots {
+    display: inline-block;
+}
+
+.gpt-loading-dots::after {
+    content: '...';
+    animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+
+    0%,
+    20%,
+    100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}

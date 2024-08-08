@@ -6,7 +6,7 @@ import { GoAlert } from "react-icons/go";
 import EditVideoModal from '../modals/EditVideoModal';
 
 
-const UserProfileVideosSectionCard = ({ video }) => {
+const UserProfileVideosSectionCard = ({ video, refetchVideos }) => {
     const { likes, createdAt, thumbnail, title, duration } = video;
     const [showEditModal, setShowEditModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -45,7 +45,7 @@ const UserProfileVideosSectionCard = ({ video }) => {
                 </div>
             </div>
             {showDeleteModal && <DeleteModal setShowDeleteModal={setShowDeleteModal} title={title} />}
-            {showEditModal && <EditVideoModal videoId={video._id} setShowModal={setShowEditModal} />}
+            {showEditModal && <EditVideoModal setShowModal={setShowEditModal} video={video} refetchVideos={refetchVideos} />}
         </div>
     )
 };

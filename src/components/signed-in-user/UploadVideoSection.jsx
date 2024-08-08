@@ -23,6 +23,9 @@ const UploadVideoSection = () => {
     })
 
     async function onSubmit(data) {
+        if (data?.thumbnail[0]?.size > 1000000) {
+            return toast("Thumbnail size must be less than 1 mb")
+        }
         const formData = new FormData();
         formData.append("video", data.video[0]);
         formData.append("thumbnail", data.thumbnail[0])
@@ -69,24 +72,24 @@ const UploadVideoSection = () => {
                     <form onSubmit={handleSubmit(onSubmit)} className='modal-box relative max-w-2xl'>
                         <div className='form-control'>
                             <label className='label label-text'>Title</label>
-                            <textarea {...register("title")} type="text" className='textarea textarea-bordered' />
+                            <textarea required {...register("title")} type="text" className='textarea textarea-bordered' />
                         </div>
                         <div className='form-control'>
                             <label className='label label-text'>Description</label>
-                            <textarea {...register("description")} type="text"
+                            <textarea required {...register("description")} type="text"
                                 rows={3} className='textarea textarea-bordered' />
                         </div>
                         <div className='form-control'>
                             <label className='label label-text'>Duration</label>
-                            <input {...register("duration")} defaultValue={"00:00:10"} type="text" className='input input-bordered' placeholder='eg. 01:42:34' />
+                            <input required {...register("duration")} defaultValue={"00:00:10"} type="text" className='input input-bordered' placeholder='eg. 01:42:34' />
                         </div>
                         <div className='form-control'>
                             <label className='label label-text'>Video File</label>
-                            <input {...register("video")} type="file" accept='video/*' className='file-input file-input-bordered' />
+                            <input required {...register("video")} type="file" accept='video/*' className='file-input file-input-bordered' />
                         </div>
                         <div className='form-control'>
                             <label className='label label-text'>Thumbnail</label>
-                            <input {...register("thumbnail")} type="file" accept='image/*' className='file-input file-input-bordered' />
+                            <input required {...register("thumbnail")} type="file" accept='image/*' className='file-input file-input-bordered' />
                         </div>
                         <div className='flex items-center justify-center pt-4'>
                             <button type='submit' className='btn btn-secondary btn-sm rounded'>Upload</button>
