@@ -34,7 +34,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/posts",
-                element: <Posts />
+                element: <SemiPrivetRoute>
+                    <Posts />
+                </SemiPrivetRoute>
             },
             {
                 path: "/subscriptions",

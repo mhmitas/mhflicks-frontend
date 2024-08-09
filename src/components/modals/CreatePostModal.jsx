@@ -7,7 +7,7 @@ import { GoX } from 'react-icons/go';
 import { axiosInstance } from '../../hooks/useAxios';
 axiosInstance
 
-const CreatePostModal = ({ setShowModal, user }) => {
+const CreatePostModal = ({ setShowModal, user, refetch }) => {
     const [processing, setProcessing] = useState(false)
     const [image, setImage] = useState("")
     const [imagePreview, setImagePreview] = useState("")
@@ -37,6 +37,7 @@ const CreatePostModal = ({ setShowModal, user }) => {
                 toast.success("Congratulations")
             }
             setShowModal(false)
+            if (refetch) { refetch() }
         } catch (err) {
             console.error(err);
             setProcessing(false)

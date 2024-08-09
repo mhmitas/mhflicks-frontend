@@ -5,10 +5,11 @@ import { axiosInstance } from '../hooks/useAxios';
 import VideoPlayer from '../components/video/VideoPlayer';
 import LikeSubscribe from '../components/video/LikeSubscribe';
 import CommentsSection from '../components/video/video-comment/VideoCommentSection';
+import useAuth from '../hooks/useAuth';
 
 const PlayVideoPage = () => {
   const { id } = useParams();
-
+  const { user, loading: authLoading } = useAuth()
   const { data: video = {}, isLoading: isVideoLoading, error: videoFetchError } = useQuery({
     queryKey: [`video-data-${id}`],
     queryFn: async () => {
@@ -18,7 +19,7 @@ const PlayVideoPage = () => {
     }
   })
 
-  if (isVideoLoading) {
+  if (isVideoLoading || authLoading) {
     return <LoadingSkeleton />
   }
   if (videoFetchError) {
@@ -34,7 +35,10 @@ const PlayVideoPage = () => {
         </div>
         <LikeSubscribe id={id} />
       </div>
-      <CommentsSection videoId={id} />
+      {user ?
+        <CommentsSection videoId={id} /> :
+        <p className='text-center'>Comments are turned off</p>
+      }
     </section>
   );
 };

@@ -3,7 +3,7 @@ import { FcComments } from "react-icons/fc";
 import { GoHeartFill } from "react-icons/go";
 import { MdBookmark } from "react-icons/md";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, user }) => {
     const { title, content, channel, image } = post;
 
     return (
@@ -19,7 +19,7 @@ const PostCard = ({ post }) => {
                         </div>
                     </div>
                 </div>
-                <div className='space-x-1'>
+                <div className={`space-x-1 ${user?.username === channel?.username && "hidden"}`}>
                     <button className='btn btn-primary rounded-full btn-sm'>Subscribe</button>
                 </div>
             </div>
@@ -28,7 +28,7 @@ const PostCard = ({ post }) => {
                 <p className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</p>
             </div>
             {image &&
-                <div className="flex items-center justify-center w-full sm:max-h-[85vh] overflow-hidden">
+                <div className="flex items-center justify-center w-full max-h-[90vh] sm:max-h-[80vh] overflow-hidden">
                     <img className="rounded-md w-auto" src={image?.secure_url} alt="Image" />
                 </div>
             }
