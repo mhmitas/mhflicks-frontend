@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PostCard from '../../components/cards/PostCard';
-import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import { axiosInstance } from '../../hooks/useAxios';
+import LoadingSkeletonPost from '../../components/LoadingSkelitons/LoadingSkelitonPost';
 
 const Posts = () => {
-    const [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        axios('/posts.json')
-            .then(res => setPosts(res.data))
-    }, [])
+    const { data: posts = [], isLoading, refetch, error } = useQuery({
+        queryKey: ["all-posts"],
+        queryFn: async () => {
+            const { data } = await axiosInstance("/posts/all-posts")
+            console.log(data.data);
+            return data.data
+        }
+    })
+
+    if (error) {
+        console.log(error);
+    }
+
 
     return (
         <section className='my-container w-full min-h-screen bg-slate-950 py-8 rounded-lg'>
-            <div className='max-w-2xl mx-auto flex flex-col gap-6'>
+            {isLoading && <LoadingSkeletonAllPosts />}
+            <div className='max-w-xl md:max-w-2xl mx-auto flex flex-col gap-6'>
                 {posts.map((post, index) => <PostCard post={post} key={index} />)}
             </div>
         </section>
@@ -22,6 +33,12 @@ const Posts = () => {
 export default Posts;
 
 
-/* 
-
-*/
+function LoadingSkeletonAllPosts() {
+    return (
+        <div className='max-w-2xl mx-auto flex flex-col gap-6 mb-4'>
+            <LoadingSkeletonPost />
+            <LoadingSkeletonPost />
+            <LoadingSkeletonPost />
+        </div>
+    )
+}

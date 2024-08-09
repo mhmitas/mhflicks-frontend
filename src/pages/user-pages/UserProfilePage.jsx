@@ -16,7 +16,7 @@ const UserProfilePage = () => {
             <UserProfileHeader currentUser={user} />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                 <UploadVideoSection />
-                <UploadPostSection />
+                <UploadPostSection user={user} />
             </div>
             <div>
                 <UserProfilePageContentTab currentTab={currentTab} setCurrentTab={setCurrentTab} />

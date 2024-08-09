@@ -40,7 +40,7 @@ const UserProfileVideosSectionCard = ({ video, refetchVideos }) => {
                     </div>
                     <div className="flex gap-2">
                         <button onClick={() => setShowEditModal(true)} title='Edit' className='btn btn-sm rounded btn-neutral'>Edit</button>
-                        <button onClick={() => setShowDeleteModal(true)} title='Delete' className='btn btn-sm rounded btn-neutral'>Delete</button>
+                        <button disabled onClick={() => setShowDeleteModal(true)} title='Delete' className='btn btn-sm rounded btn-neutral'>Delete</button>
                     </div>
                 </div>
             </div>

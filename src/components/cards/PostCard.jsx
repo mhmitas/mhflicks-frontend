@@ -1,10 +1,10 @@
 import { Tooltip } from "@mui/material";
 import { FcComments } from "react-icons/fc";
 import { GoHeartFill } from "react-icons/go";
-import { MdBookmark, MdComment } from "react-icons/md";
+import { MdBookmark } from "react-icons/md";
 
 const PostCard = ({ post }) => {
-    const { title, content, author, media } = post;
+    const { title, content, channel, image } = post;
 
     return (
         <div className='p-4 md:p-5 bg-base-100 border-base-300 border rounded-lg space-y-3 md:space-y-4'>
@@ -12,9 +12,9 @@ const PostCard = ({ post }) => {
                 <div className='flex items-center gap-2'>
                     <figure className='size-9 sm:size-11 rounded-full overflow-hidden'><img src="/default-avatar.jpg" alt="" /></figure>
                     <div className='*:leading-5'>
-                        <h1 title={author?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{author?.fullName}</h1>
+                        <h1 title={channel?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{channel?.fullName}</h1>
                         <div className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base [400px]:text-lg leading-5'>
-                            <h1>{author?.username}</h1>▪
+                            <h1>{channel?.username}</h1>▪
                             <h1>165k subscribers</h1>
                         </div>
                     </div>
@@ -25,13 +25,11 @@ const PostCard = ({ post }) => {
             </div>
             <div className=''>
                 <h1 className={`text-base sm:text-lg font-semibold line-clamp-3`}>{title}</h1>
-                <p className={`${media && "line-clamp-4 text-sm sm:text-base"}`}>{content}</p>
+                <p className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</p>
             </div>
-            {media?.length > 0 &&
-                <div className='relative w-full'>
-                    <div className='rounded-md overflow-hidden'>
-                        <img src={media} alt="" />
-                    </div>
+            {image &&
+                <div className="flex items-center justify-center w-full sm:max-h-[85vh] overflow-hidden">
+                    <img className="rounded-md w-auto" src={image?.secure_url} alt="Image" />
                 </div>
             }
             <div className='flex items-center justify-end gap-3 cursor-default'>

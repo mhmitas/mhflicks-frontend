@@ -58,7 +58,7 @@ const UserProfileHeader = ({ currentUser }) => {
                     <span className={`${expandAbout || 'line-clamp-1'}`}>
                         {userData?.about || "About: Empty (Write something about you and update your profile)"}
                     </span>
-                    <span onClick={() => setExpandAbout(!expandAbout)} className='font-semibold'>
+                    <span onClick={() => setExpandAbout(!expandAbout)} className='font-semibold cursor-default'>
                         {expandAbout ? " Show less" : "..Show more"}
                     </span>
                 </h3>

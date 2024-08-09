@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../hooks/useAuth';
 import VideoCard from '../../components/cards/VideoCard';
 import { axiosInstance } from '../../hooks/useAxios';
+import SignInToContinue from '../../components/common/SignInToContinue';
+import { AiOutlinePlayCircle } from 'react-icons/ai';
 
 const SubscriptionsPage = () => {
     const { user, loading: authLoading } = useAuth()
@@ -22,7 +24,7 @@ const SubscriptionsPage = () => {
     }
     // if user not exits return
     if (!user) {
-        return <SignInToContinue Icon={AiOutlineLike} title='Liked videos' message={`Liked videos isn't viewable when you're signed out.`} />
+        return <SignInToContinue Icon={AiOutlinePlayCircle} title='Subscription videos' message={`Videos under subscription cannot be viewed without signing in.`} />
     }
     if (error) {
         console.log(error);
