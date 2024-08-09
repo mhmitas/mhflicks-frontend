@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaEdit, FaImage, FaSmile } from 'react-icons/fa';
+import { FaImage } from 'react-icons/fa';
 import CloseModalButton from '../common/CloseModalButton';
 import toast from 'react-hot-toast';
 import { TextareaAutosize } from '@mui/material';
@@ -11,6 +11,7 @@ const CreatePostModal = ({ setShowModal, user, refetch }) => {
     const [processing, setProcessing] = useState(false)
     const [image, setImage] = useState("")
     const [imagePreview, setImagePreview] = useState("")
+    const [textContentLength, setTextContentLength] = useState(0);
     const [textContent, setTextContent] = useState("");
 
 
@@ -20,6 +21,12 @@ const CreatePostModal = ({ setShowModal, user, refetch }) => {
         }
         setImage(() => e.target.files[0])
         setImagePreview(URL.createObjectURL(e.target.files[0]))
+    }
+
+    function handleTextContent(e) {
+        const value = e.target.value
+        setTextContentLength(value.length)
+        setTextContent(value)
     }
 
     async function handleSubmit() {
@@ -48,18 +55,17 @@ const CreatePostModal = ({ setShowModal, user, refetch }) => {
     return (
         <section className='modal modal-open overflow-auto'>
             <div className='modal-box relative space-y-2 max-w-xl w-full pt-10'>
-                <div className='form-control'>
+                <div className='form-control relative'>
                     <TextareaAutosize
                         value={textContent}
-                        onChange={(e) => {
-                            const value = e.target.value
-                            setTextContent(value)
-                        }}
+                        onChange={handleTextContent}
                         placeholder={`What's on your mind?`}
-                        className='bg-base-100 focus:outline-none text-lg'
+                        className='bg-base-100 focus:outline-none text-lg pb-6 rounded-lg'
                         autoFocus
-                        minRows={2}
+                        minRows={1}
+                        maxLength={301}
                     />
+                    <span className={`absolute bottom-0 right-0 bg-base-300 px-2 py-1 rounded-tl-sm text-xs font-semibold ${textContent.length > 280 && textContent.length <= 300 ? "text-warning" : textContent.length > 300 && "text-error"}`}>{textContentLength} | 300</span>
                 </div>
                 <div className={`rounded-lg py-2 relative ${!image && "hidden"}`}>
                     <RemoveImageButton setImage={setImage} setImagePreview={setImagePreview} />
@@ -72,9 +78,9 @@ const CreatePostModal = ({ setShowModal, user, refetch }) => {
                     </div>
                     <button
                         onClick={handleSubmit}
-                        disabled={!textContent || processing}
+                        disabled={!textContent || processing || textContent.length > 300}
                         type='submit'
-                        className='btn btn-sm rounded btn-info'
+                        className='btn btn-sm rounded btn-info disabled:bg-blue-900'
                     >
                         {processing ? <span className='gpt-loading-dots text-base-content'>Processing</span> : "Post"}
                     </button>
