@@ -33,7 +33,7 @@ const Posts = () => {
             {isLoading && <LoadingSkeletonAllPosts />}
             <div className='max-w-xl md:max-w-[650px] mx-auto flex flex-col gap-6'>
                 {user &&
-                    <div className="flex items-center space-x-4 bg-gradient-to-r from-rose-900 to-blue-900 p-4 rounded-lg shadow-md border border-base-300">
+                    <div className="flex items-center space-x-4 bg-base-100 p-4 rounded-lg shadow-md border border-base-300">
                         <div className="avatar">
                             <div className="w-12 rounded-full">
                                 <img src={user?.avatar} alt="Avatar" />
@@ -43,7 +43,8 @@ const Posts = () => {
                             onClick={() => setShowModal(true)}
                             type="text"
                             placeholder={`What's on your mind, ${user && user?.fullName?.split(" ")[0]}?`}
-                            className="input input-bordered w-full bg-opacity-0"
+                            className="input input-bordered w-full bg-gradient-to-r
+                            from-rose-900 to-blue-900 cursor-pointer border-none"
                             readOnly
                         />
                     </div>

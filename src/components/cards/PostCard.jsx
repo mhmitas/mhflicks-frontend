@@ -28,7 +28,7 @@ const PostCard = ({ post, user }) => {
                 <h1 className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</h1>
             </div>
             {image &&
-                <div className="flex items-center justify-center w-full max-h-[85vh] sm:max-h-[80vh] overflow-hidden">
+                <div className="flex items-center justify-center w-full max-h-[80vh] sm:max-h-[80vh] overflow-hidden rounded-md">
                     <img className="rounded-md w-auto" src={image?.secure_url} alt="Image" />
                 </div>
             }
