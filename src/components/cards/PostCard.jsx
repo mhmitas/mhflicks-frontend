@@ -25,10 +25,10 @@ const PostCard = ({ post, user }) => {
             </div>
             <div className=''>
                 <h1 className={`text-base sm:text-lg font-semibold line-clamp-3`}>{title}</h1>
-                <p className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</p>
+                <h1 className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</h1>
             </div>
             {image &&
-                <div className="flex items-center justify-center w-full max-h-[90vh] sm:max-h-[80vh] overflow-hidden">
+                <div className="flex items-center justify-center w-full max-h-[85vh] sm:max-h-[80vh] overflow-hidden">
                     <img className="rounded-md w-auto" src={image?.secure_url} alt="Image" />
                 </div>
             }
