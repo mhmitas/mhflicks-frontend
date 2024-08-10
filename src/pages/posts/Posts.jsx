@@ -49,7 +49,7 @@ const Posts = () => {
                         />
                     </div>
                 }
-                {posts.map((post, index) => <PostCard post={post} key={index} user={user} />)}
+                {posts.map((post, index) => <PostCard post={post} key={index} user={user} authLoading={authLoading} />)}
             </div>
             {showModal && <CreatePostModal user={user} setShowModal={setShowModal} refetch={refetch} />}
         </section>

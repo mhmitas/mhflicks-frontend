@@ -72,7 +72,7 @@ function PostCardForDetailModal({ post, user }) {
                         <span className="font-semibold">535</span>
                     </div>
                 </Tooltip>
-                <Tooltip arrow title="Bookmark">
+                <Tooltip arrow title="Save">
                     <div className="flex items-center ">
                         <button className='btn btn-sm btn-circle btn-ghost btn-neutral rounded-box hover:text-info hover:bg-info/10 text-lg sm:text-xl'><MdBookmark /></button>
                         <span className="font-semibold">535</span>
