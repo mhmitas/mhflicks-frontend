@@ -3,7 +3,7 @@ import PostDetailModalPostCard from '../post/PostDetailModalPostCard';
 import PostCommentSection from '../post/PostCommentSection';
 import { GoX } from 'react-icons/go';
 
-const PostDetailModal = ({ setShowModal, post, user }) => {
+const PostDetailModal = ({ setShowModal, post, user, cardData }) => {
 
     function handleOverlayClick(e) {
         if (e.target === e.currentTarget) {
@@ -19,7 +19,7 @@ const PostDetailModal = ({ setShowModal, post, user }) => {
                     <button onClick={() => setShowModal(false)} className='btn btn-ghost btn-sm btn-circle text-xl'><GoX /></button>
                 </div>
                 <div className='divider p-0 m-0'></div>
-                <PostDetailModalPostCard post={post} user={user} />
+                <PostDetailModalPostCard cardData={cardData} />
                 <PostCommentSection user={user} />
             </div>
         </div>

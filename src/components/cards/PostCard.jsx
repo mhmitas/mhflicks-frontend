@@ -94,7 +94,21 @@ const PostCard = ({ post, user, authLoading }) => {
                     <BookmarkComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
                 </div>
             </div>
-            {showModal && <PostDetailModal setShowModal={setShowModal} post={post} user={user} stats />}
+            {showModal && <PostDetailModal
+                setShowModal={setShowModal}
+                post={post}
+                user={user}
+                cardData={{
+                    user,
+                    post,
+                    stats,
+                    userStatus,
+                    isLiked, setIsLiked,
+                    isBookmarked, setIsBookmarked,
+                    isSubscribed, setIsSubscribed,
+                    statsRefetch
+                }}
+            />}
         </div>
     )
 }

@@ -3,8 +3,10 @@ import React from 'react';
 import { FcComments } from 'react-icons/fc';
 import { GoHeartFill } from 'react-icons/go';
 import { MdBookmark } from 'react-icons/md';
+import { BookmarkComponent, LikeComponent } from './PostCardLikeAndSaveComponents';
 
-function PostDetailModalPostCard({ post, user }) {
+function PostDetailModalPostCard({ cardData }) {
+    const { user, post, stats, userStatus, isLiked, setIsLiked, isBookmarked, setIsBookmarked, statsRefetch } = cardData
     const { title, content, channel, image } = post;
 
     return (
@@ -40,18 +42,8 @@ function PostDetailModalPostCard({ post, user }) {
                         <span className="font-semibold">535</span>
                     </div>
                 </Tooltip>
-                <Tooltip arrow title="Like">
-                    <div className="flex items-center ">
-                        <button className='btn btn-sm btn-circle btn-ghost btn-neutral rounded-box hover:text-primary hover:bg-primary/10 text-lg sm:text-xl'><GoHeartFill /></button>
-                        <span className="font-semibold">535</span>
-                    </div>
-                </Tooltip>
-                <Tooltip arrow title="Save">
-                    <div className="flex items-center ">
-                        <button className='btn btn-sm btn-circle btn-ghost btn-neutral rounded-box hover:text-info hover:bg-info/10 text-lg sm:text-xl'><MdBookmark /></button>
-                        <span className="font-semibold">535</span>
-                    </div>
-                </Tooltip>
+                <LikeComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isLiked={isLiked} setIsLiked={setIsLiked} />
+                <BookmarkComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
             </div>
         </div>
     )
