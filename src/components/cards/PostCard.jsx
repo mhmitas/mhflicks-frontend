@@ -1,13 +1,12 @@
 import { Tooltip } from "@mui/material";
 import { useState } from "react";
 import { FcComments } from "react-icons/fc";
-import { GoHeartFill } from "react-icons/go";
-import { MdBookmark } from "react-icons/md";
-import PostCommentsModal from "../modals/PostCommentsModal";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../../hooks/useAxios";
 import { viewsFormat } from "../../utils/viewsFormat";
 import useSubscribe from "../../hooks/UseSubscribe";
+import PostDetailModal from "../modals/PostDetailModal";
+import { BookmarkComponent, LikeComponent } from "../post/PostCardLikeAndSaveComponents";
 
 const PostCard = ({ post, user, authLoading }) => {
     const { title, content, channel, image } = post;
@@ -27,6 +26,7 @@ const PostCard = ({ post, user, authLoading }) => {
 
     const { data: userStatus = {}, isLoading: userStatusLoading, error: userStatusError } = useQuery({
         queryKey: [`user-status-of-the-post-${post?._id}`],
+        enabled: () => !!user && !authLoading,
         queryFn: async () => {
             const { data } = await axiosInstance(`/posts/post/user-status/${post?._id}?userId=${user?._id}&owner=${post?.owner}`)
             const result = data.data;
@@ -43,40 +43,6 @@ const PostCard = ({ post, user, authLoading }) => {
             return data?.data
         }
     })
-
-    async function handleLike() {
-        try {
-            setIsLiked(() => !isLiked)
-            const info = {
-                post: post?._id,
-                user: user?._id,
-                like: true
-            }
-            const { data } = await axiosInstance.post(`/user-actions/like-post`, info)
-            if (data?.success) {
-                statsRefetch()
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    }
-    async function handleBookmark() {
-        try {
-            setIsBookmarked(() => !isBookmarked)
-            const info = {
-                post: post?._id,
-                user: user?._id,
-                bookmark: true
-            }
-            const { data } = await axiosInstance.post(`/user-actions/bookmark-post`, info);
-            // console.log(data?.data);
-            if (data?.success) {
-                statsRefetch()
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    }
 
     function allRefetch() {
         statsRefetch()
@@ -120,25 +86,15 @@ const PostCard = ({ post, user, authLoading }) => {
                 <div className='flex items-center justify-end gap-3 cursor-default'>
                     <Tooltip arrow title="Comment">
                         <div className="flex items-center ">
-                            <button onClick={() => setShowModal(true)} className='btn btn-sm btn-circle  rounded-box hover:text-primary hover:bg-accent/10 text-lg sm:text-xl'><FcComments /></button>
-                            <span className="font-semibold">{stats?.totalComment}</span>
+                            <button onClick={() => setShowModal(true)} className='btn btn-sm btn-circle rounded-box hover:text-primary hover:bg-accent/10 text-lg sm:text-xl'><FcComments /></button>
+                            <span>{stats?.totalComment}</span>
                         </div>
                     </Tooltip>
-                    <Tooltip arrow title="Like">
-                        <div className="flex items-center ">
-                            <button onClick={handleLike} className={`btn btn-sm btn-circle ${isLiked ? "text-primary" : ""} rounded-box hover:text-primary hover:bg-primary/10 text-lg sm:text-xl`}><GoHeartFill /></button>
-                            <span className="font-semibold">{stats?.totalLike}</span>
-                        </div>
-                    </Tooltip>
-                    <Tooltip arrow title="Save">
-                        <div className="flex items-center ">
-                            <button onClick={handleBookmark} className={`btn btn-sm btn-circle ${isBookmarked ? "text-info" : ""} rounded-box hover:text-info hover:bg-info/10 text-lg sm:text-xl`}><MdBookmark /></button>
-                            <span className="font-semibold">{stats?.totalBookmark}</span>
-                        </div>
-                    </Tooltip>
+                    <LikeComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isLiked={isLiked} setIsLiked={setIsLiked} />
+                    <BookmarkComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
                 </div>
             </div>
-            {showModal && <PostCommentsModal setShowModal={setShowModal} post={post} user={user} />}
+            {showModal && <PostDetailModal setShowModal={setShowModal} post={post} user={user} stats />}
         </div>
     )
 }
