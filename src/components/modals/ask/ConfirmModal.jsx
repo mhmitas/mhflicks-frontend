@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ConfirmModal = ({ message, onConfirm, onCancel }) => {
+const ConfirmModal = ({ message, description, onConfirm, onCancel }) => {
     const handleOverlayClick = (e) => {
         if (e.target === e.currentTarget) {
             onCancel();
@@ -14,7 +14,10 @@ const ConfirmModal = ({ message, onConfirm, onCancel }) => {
         >
             <div className="bg-base-200 rounded-lg shadow-lg p-6 w-96">
                 <h2 className="mb-2 text-color-gray">Confirm Action</h2>
-                <div className="text-lg font-semibold mb-6">{message}</div>
+                <div className='mb-6'>
+                    <div className="text-lg font-semibold">{message}</div>
+                    {description && <div>{description}</div>}
+                </div>
                 <div className="flex justify-end space-x-4">
                     <button className="btn btn-error btn-sm rounded" onClick={onCancel}>
                         Cancel

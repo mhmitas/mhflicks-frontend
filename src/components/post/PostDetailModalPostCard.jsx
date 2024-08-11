@@ -6,26 +6,11 @@ import { MdBookmark } from 'react-icons/md';
 import { BookmarkComponent, LikeComponent } from './PostCardLikeAndSaveComponents';
 
 function PostDetailModalPostCard({ cardData }) {
-    const { user, post, stats, userStatus, isLiked, setIsLiked, isBookmarked, setIsBookmarked, statsRefetch } = cardData
+    const { user, post, stats, userStatus, isLiked, setIsLiked, isBookmarked, setIsBookmarked, refetchStats } = cardData
     const { title, content, channel, image } = post;
 
     return (
         <div className="space-y-3 md:space-y-4">
-            <div className='flex items-center justify-between gap2'>
-                <div className='flex items-center gap-2'>
-                    <figure className='size-9 sm:size-11 rounded-full overflow-hidden'><img src="/default-avatar.jpg" alt="" /></figure>
-                    <div className='*:leading-5'>
-                        <h1 title={channel?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{channel?.fullName}</h1>
-                        <div className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base [400px]:text-lg leading-5'>
-                            <h1>{channel?.username}</h1>▪
-                            <h1>165k subscribers</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className={`space-x-1 ${user?.username === channel?.username && "hidden"}`}>
-                    <button className='btn btn-primary rounded-full btn-sm'>Subscribe</button>
-                </div>
-            </div>
             <div className=''>
                 <h1 className={`text-base sm:text-lg font-semibold line-clamp-3`}>{title}</h1>
                 <h1 className={`${image && "line-clamp-4 text-sm sm:text-base"}`}>{content}</h1>
@@ -42,8 +27,8 @@ function PostDetailModalPostCard({ cardData }) {
                         <span className="font-semibold">535</span>
                     </div>
                 </Tooltip>
-                <LikeComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isLiked={isLiked} setIsLiked={setIsLiked} />
-                <BookmarkComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
+                <LikeComponent user={user} post={post} stats={stats} refetchStats={refetchStats} isLiked={isLiked} setIsLiked={setIsLiked} />
+                <BookmarkComponent user={user} post={post} stats={stats} refetchStats={refetchStats} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
             </div>
         </div>
     )

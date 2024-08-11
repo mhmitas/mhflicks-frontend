@@ -7,6 +7,7 @@ import { viewsFormat } from "../../utils/viewsFormat";
 import useSubscribe from "../../hooks/UseSubscribe";
 import PostDetailModal from "../modals/PostDetailModal";
 import { BookmarkComponent, LikeComponent } from "../post/PostCardLikeAndSaveComponents";
+import { Link } from "react-router-dom";
 
 const PostCard = ({ post, user, authLoading }) => {
     const { title, content, channel, image } = post;
@@ -16,7 +17,7 @@ const PostCard = ({ post, user, authLoading }) => {
     const [isBookmarked, setIsBookmarked] = useState(false)
     const handleSubscribe = useSubscribe(isSubscribed, setIsSubscribed, allRefetch, post?.owner)
 
-    const { data: stats = {}, statsLoading, statsError, refetch: statsRefetch } = useQuery({
+    const { data: stats = {}, statsLoading, statsError, refetch: refetchStats } = useQuery({
         queryKey: [`post-stats-${post?._id}`],
         queryFn: async () => {
             const { data } = await axiosInstance(`/posts/post-stats/${post?._id}?owner=${post?.owner}`)
@@ -45,7 +46,7 @@ const PostCard = ({ post, user, authLoading }) => {
     })
 
     function allRefetch() {
-        statsRefetch()
+        refetchStats()
     }
 
     if (statsError) console.error(statsError);
@@ -56,7 +57,7 @@ const PostCard = ({ post, user, authLoading }) => {
         <div className='p-4 md:p-5 bg-base-100 border-base-300 border rounded-lg'>
             <div className="space-y-3 md:space-y-4">
                 <div className='flex items-center justify-between gap2'>
-                    <div className='flex items-center gap-2'>
+                    <Link to={`/profile/@${post?.channel?.username}`}><div className='flex items-center gap-2'>
                         <figure className="size-10 *:size-full rounded-full overflow-hidden border border-base-300">
                             <img
                                 alt={channel?.username}
@@ -69,7 +70,7 @@ const PostCard = ({ post, user, authLoading }) => {
                                 <h1>{viewsFormat(stats?.subscribers)} subscribers</h1>
                             </div>
                         </div>
-                    </div>
+                    </div></Link>
                     <div className={`space-x-1 ${user?.username === channel?.username && "hidden"}`}>
                         <button onClick={() => handleSubscribe()} className={`btn ${isSubscribed ? "" : "btn-primary"} rounded-full btn-sm`}>{isSubscribed ? "Subscribed" : "Subscribe"}</button>
                     </div>
@@ -90,8 +91,8 @@ const PostCard = ({ post, user, authLoading }) => {
                             <span>{stats?.totalComment}</span>
                         </div>
                     </Tooltip>
-                    <LikeComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isLiked={isLiked} setIsLiked={setIsLiked} />
-                    <BookmarkComponent user={user} post={post} stats={stats} statsRefetch={statsRefetch} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
+                    <LikeComponent user={user} post={post} stats={stats} refetchStats={refetchStats} isLiked={isLiked} setIsLiked={setIsLiked} />
+                    <BookmarkComponent user={user} post={post} stats={stats} refetchStats={refetchStats} isBookmarked={isBookmarked} setIsBookmarked={setIsBookmarked} />
                 </div>
             </div>
             {showModal && <PostDetailModal
@@ -106,7 +107,7 @@ const PostCard = ({ post, user, authLoading }) => {
                     isLiked, setIsLiked,
                     isBookmarked, setIsBookmarked,
                     isSubscribed, setIsSubscribed,
-                    statsRefetch
+                    refetchStats
                 }}
             />}
         </div>
