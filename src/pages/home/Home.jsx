@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import HomeVideosSection from '../../components/root-layout-components/HomeVideosSection';
 
 const Home = () => {
 
     return (
-        <div className=''>
+        <div className='my-container'>
             <HomeVideosSection />
         </div>
     );
@@ -12,3 +12,14 @@ const Home = () => {
 
 export default Home;
 
+
+/* 
+
+const { } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+
+    }
+})
+
+*/

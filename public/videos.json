@@ -1,7 +1,7 @@
 [
     {
         "videoFile": "video1.mp4",
-        "thumbnail": "https://i.ytimg.com/vi/es4x5R-rV9s/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDE3HP-LWUfwXnV_EbJG3WbK6Tv8w",
+        "thumbnail": "/assets/1.jpg",
         "title": "The Beauty of Nature",
         "description": "A breathtaking journey through the world's most beautiful landscapes.",
         "duration": "10:05",
@@ -10,7 +10,7 @@
     },
     {
         "videoFile": "video2.mp4",
-        "thumbnail": "https://i.ytimg.com/vi/IUN664s7N-c/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCadb-9Bf_GCffK-a8JlccoyxTb7g",
+        "thumbnail": "/assets/2.jpeg",
         "title": "Relaxing Jazz Music",
         "description": "Relax and enjoy some smooth jazz music.",
         "duration": "2:15:30",
@@ -19,7 +19,7 @@
     },
     {
         "videoFile": "video3.mp4",
-        "thumbnail": "https://i.ytimg.com/vi/Y4id5tlTYsY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLASTL8hsnAdrOKFGteXgvsflZ1ejQ",
+        "thumbnail": "/assets/3.jpeg",
         "title": "Epic Space Documentary",
         "description": "Explore the vastness of space in this epic documentary.",
         "duration": "1:45:20",
@@ -28,7 +28,7 @@
     },
     {
         "videoFile": "video3.mp4",
-        "thumbnail": "https://i.ytimg.com/vi/3ouqT3lfiUE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLByrJa96e7NwqW8heTW9l1KS6N0yQ",
+        "thumbnail": "/assets/4.jpeg",
         "title": "Build in public and open source | Only video that you need 🔥",
         "description": "Explore the vastness of space in this epic documentary.",
         "duration": "1:45:20",
@@ -37,7 +37,7 @@
     },
     {
         "videoFile": "video4.mp4",
-        "thumbnail": "https://img.youtube.com/vi/ktvTqknDobU/0.jpg",
+        "thumbnail": "/assets/5.jpeg",
         "title": "Cooking with Chef John",
         "description": "Learn to cook delicious meals with Chef John.",
         "duration": "15:35",
@@ -46,7 +46,7 @@
     },
     {
         "videoFile": "video5.mp4",
-        "thumbnail": "https://img.youtube.com/vi/oUFJJNQGwhk/0.jpg",
+        "thumbnail": "/assets/6.jpeg",
         "title": "Ultimate Workout Routine",
         "description": "Get in shape with this ultimate workout routine.",
         "duration": "30:00",
@@ -55,7 +55,7 @@
     },
     {
         "videoFile": "video6.mp4",
-        "thumbnail": "https://img.youtube.com/vi/6ZfuNTqbHE8/0.jpg",
+        "thumbnail": "/assets/7.jpg",
         "title": "Marvel Movie Trailer",
         "description": "Watch the latest trailer for the upcoming Marvel movie.",
         "duration": "2:30",
@@ -64,7 +64,7 @@
     },
     {
         "videoFile": "video7.mp4",
-        "thumbnail": "https://img.youtube.com/vi/tgbNymZ7vqY/0.jpg",
+        "thumbnail": "/assets/8.jpg",
         "title": "Travel Vlog: Japan",
         "description": "Join us on our adventure through Japan.",
         "duration": "20:10",
@@ -73,7 +73,7 @@
     },
     {
         "videoFile": "video8.mp4",
-        "thumbnail": "https://img.youtube.com/vi/_nBlN9yp9R8/0.jpg",
+        "thumbnail": "/assets/9.jpg",
         "title": "Tech Reviews: Latest Gadgets",
         "description": "Get the latest reviews on the newest gadgets.",
         "duration": "12:45",
@@ -82,7 +82,7 @@
     },
     {
         "videoFile": "video9.mp4",
-        "thumbnail": "https://img.youtube.com/vi/dQw4w9WgXcQ/0.jpg",
+        "thumbnail": "/assets/10.jpg",
         "title": "Music Video: Hit Song",
         "description": "Check out the official music video for the latest hit song.",
         "duration": "3:50",
@@ -91,7 +91,7 @@
     },
     {
         "videoFile": "video10.mp4",
-        "thumbnail": "https://img.youtube.com/vi/L_jWHffIx5E/0.jpg",
+        "thumbnail": "/assets/11.jpg",
         "title": "DIY Home Improvement",
         "description": "Learn how to improve your home with these DIY tips.",
         "duration": "25:15",
@@ -100,7 +100,7 @@
     },
     {
         "videoFile": "video11.mp4",
-        "thumbnail": "https://img.youtube.com/vi/s6zR2T9vn2c/0.jpg",
+        "thumbnail": "/assets/12.jpg",
         "title": "Gaming Highlights",
         "description": "Watch the best gaming highlights from this week.",
         "duration": "8:20",
@@ -109,7 +109,7 @@
     },
     {
         "videoFile": "video12.mp4",
-        "thumbnail": "https://img.youtube.com/vi/9bZkp7q19f0/0.jpg",
+        "thumbnail": "/assets/13.jpg",
         "title": "Funny Cat Videos",
         "description": "Laugh out loud with these hilarious cat videos.",
         "duration": "5:15",
@@ -118,7 +118,7 @@
     },
     {
         "videoFile": "video13.mp4",
-        "thumbnail": "https://img.youtube.com/vi/2Vv-BfVoq4g/0.jpg",
+        "thumbnail": "/assets/14.jpg",
         "title": "Live Concert: Famous Band",
         "description": "Experience the live concert of your favorite band.",
         "duration": "1:20:45",
@@ -127,7 +127,7 @@
     },
     {
         "videoFile": "video14.mp4",
-        "thumbnail": "https://img.youtube.com/vi/60ItHLz5WEA/0.jpg",
+        "thumbnail": "/assets/1.jpg",
         "title": "Yoga for Beginners",
         "description": "Start your yoga journey with these beginner poses.",
         "duration": "35:00",
@@ -136,7 +136,7 @@
     },
     {
         "videoFile": "video15.mp4",
-        "thumbnail": "https://img.youtube.com/vi/CevxZvSJLk8/0.jpg",
+        "thumbnail": "/assets/2.jpeg",
         "title": "History Documentary",
         "description": "Learn about the significant events in history with this documentary.",
         "duration": "50:30",

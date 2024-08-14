@@ -6,7 +6,7 @@ import { viewsFormat } from '../../utils/viewsFormat';
 
 const UserVideosSlider = ({ title, videos, containerId }) => {
     return (
-        <div className='rounded-lg border border-base-200 p-4'>
+        <div className='rounded-lg border border-base-300 p-4'>
             <h3 className='card-title mb-2'>{title}</h3>
             <div className='relative'>
                 <div className='grid grid-cols-1'>
@@ -17,13 +17,13 @@ const UserVideosSlider = ({ title, videos, containerId }) => {
                 <>
                     <button
                         onClick={() => scrollLeft(containerId)}
-                        className='btn btn-neutral btn-circle rounded-full absolute left-2 top-1/2'
+                        className='btn btn-sm sm:btn-md btn-neutral btn-circle rounded-full absolute left-2 top-1/2'
                     >
                         <GoChevronLeft size={25} />
                     </button>
                     <button
                         onClick={() => scrollRight(containerId)}
-                        className='btn btn-neutral btn-circle rounded-full absolute right-2 top-1/2'
+                        className='btn btn-sm sm:btn-md btn-neutral btn-circle rounded-full absolute right-2 top-1/2'
                     >
                         <GoChevronRight size={25} />
                     </button>

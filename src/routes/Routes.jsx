@@ -7,32 +7,76 @@ import UserProfilePage from "../pages/user-pages/UserProfilePage";
 import WatchHistory from "../pages/user-pages/WatchHistory";
 import LikedVideoPage from "../pages/user-pages/LikedVideoPage";
 import SavedPlaylistsPage from "../pages/user-pages/SavedPlaylistsPage";
-
+import PrivetRoute from "./PrivetRoute";
+import PlayVideoPage from "../pages/PlayVideoPage";
+import ErrorPage from "../error-page";
+import UserPublicProfile from "../pages/UserPublicProfile";
+import UserPublicProfileVideosSection from "../components/UserPublicProfileComponents/UserPublicProfileVideosSection";
+import UserPublicProfilePostsSection from "../components/UserPublicProfileComponents/UserPublicProfilePostsSection";
+import Videos from "../pages/videos/Videos";
+import Posts from "../pages/posts/Posts";
+import SemiPrivetRoute from "./SemiPrivetRoute";
+import SubscriptionsPage from "../pages/user-pages/SubscriptionsPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
                 element: <Home />
             },
             {
-                path: "/user-profile",
-                element: <UserProfilePage />
+                path: "/videos",
+                element: <Videos />
             },
             {
-                path: "/history",
+                path: "/posts",
+                element: <SemiPrivetRoute>
+                    <Posts />
+                </SemiPrivetRoute>
+            },
+            {
+                path: "/subscriptions",
+                element: <SubscriptionsPage />
+            },
+            {
+                path: "user-profile",
+                element: <SemiPrivetRoute>
+                    <UserProfilePage />
+                </SemiPrivetRoute>
+            },
+            {
+                path: "history",
                 element: <WatchHistory />
             },
             {
-                path: "/liked-videos",
+                path: "liked-videos",
                 element: <LikedVideoPage />
             },
             {
-                path: "/playlists",
+                path: "playlists",
                 element: <SavedPlaylistsPage />
+            },
+            {
+                path: "play-video/:id",
+                element: <PlayVideoPage />
+            },
+            {
+                path: "profile/:username",
+                element: <UserPublicProfile />,
+                children: [
+                    {
+                        index: true,
+                        element: <UserPublicProfileVideosSection />
+                    },
+                    {
+                        path: "posts",
+                        element: <UserPublicProfilePostsSection />
+                    },
+                ]
             },
         ]
     },
