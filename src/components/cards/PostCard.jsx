@@ -8,9 +8,10 @@ import useSubscribe from "../../hooks/UseSubscribe";
 import PostDetailModal from "../modals/PostDetailModal";
 import { BookmarkComponent, LikeComponent } from "../post/PostCardLikeAndSaveComponents";
 import { Link } from "react-router-dom";
+import moment from "moment";
 
 const PostCard = ({ post, user, authLoading }) => {
-    const { title, content, channel, image } = post;
+    const { title, content, channel, image, createdAt } = post;
     const [showModal, setShowModal] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
     const [isSubscribed, setIsSubscribed] = useState(false)
@@ -52,6 +53,7 @@ const PostCard = ({ post, user, authLoading }) => {
     if (statsError) console.error(statsError);
     if (userStatusError) console.error(userStatusError);
 
+    const timestamps = moment(new Date(createdAt), "YYYYMMDD").fromNow();
 
     return (
         <div className='p-4 md:p-5 bg-base-100 border-base-300 border rounded-lg'>
@@ -65,10 +67,13 @@ const PostCard = ({ post, user, authLoading }) => {
                         </figure>
                         <div className='*:leading-5'>
                             <h1 title={channel?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{channel?.fullName}</h1>
-                            <div className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base [400px]:text-lg leading-5 font-semibold'>
-                                <h1>{channel?.username}</h1>▪
-                                <h1>{viewsFormat(stats?.subscribers)} subscribers</h1>
-                            </div>
+                            <h1 className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
+                                <span>{channel?.username}</span>▪
+                                <span>{viewsFormat(stats?.subscribers)} subscribers</span>
+                            </h1>
+                            <p className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
+                                {timestamps}
+                            </p>
                         </div>
                     </div></Link>
                     <div className={`space-x-1 ${user?.username === channel?.username && "hidden"}`}>
