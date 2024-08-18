@@ -31,7 +31,7 @@ const Posts = () => {
     return (
         <section className='my-container w-full min-h-screen bg-slate-950 py-8 rounded-lg'>
             {isLoading && <LoadingSkeletonAllPosts />}
-            <div className='max-w-xl md:max-w-[650px] mx-auto flex flex-col gap-6'>
+            <div className='max-w-xl md:max-w-[600px] mx-auto flex flex-col gap-6'>
                 {user &&
                     <div className="flex items-center space-x-4 bg-base-100 p-4 rounded-lg shadow-md border border-base-300">
                         <div className="avatar">
