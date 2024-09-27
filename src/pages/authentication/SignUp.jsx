@@ -10,9 +10,11 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user, setUser, loading, setLoading } = useAuth()
     const [error, setError] = useState('')
+    const [processing, setProcessing] = useState(false)
 
     const onSubmit = async (data) => {
         try {
+            setProcessing(true)
             const res = await axiosInstance.post(`/users/register`, data)
             console.log(res.data);
             if (res.data.success) {
@@ -27,6 +29,8 @@ const SignUp = () => {
             console.error("Sign up error:", err);
             setError(err?.response?.data?.message)
             setLoading(false)
+        } finally {
+            setProcessing(false)
         }
     };
 
@@ -36,7 +40,7 @@ const SignUp = () => {
                 <div className="card-body w-full">
                     <h2 className="text-2xl font-semibold text-center">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {error && <p className='text-error'>{error}</p>}
+                        {error && <p className='text-error border-error border p-2 rounded-sm text-center bg-error/10'>{error}</p>}
                         <div className="form-control">
                             <label className="label" htmlFor="name">
                                 <span className="label-text">Name</span>
@@ -82,10 +86,15 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="form-control mt-6">
-                            <button type="submit" className="btn btn-info text-lg">Sign Up</button>
+                            <button disabled={processing} type="submit" className="btn btn-info text-lg">
+                                {processing ?
+                                    "Processing..." :
+                                    "Sign Up"
+                                }
+                            </button>
                         </div>
                     </form>
-                    <p className='my-1'>Already have an account? Please <Link to="/sign-in" className='link link-info'>Sign up</Link> </p>
+                    <p className='my-1'>Already have an account? Please <Link to="/sign-in" className='link link-info'>Sign in</Link> </p>
                     {/* <div className="divider my-0">or</div>
                     <ProviderSignIn /> */}
                 </div>

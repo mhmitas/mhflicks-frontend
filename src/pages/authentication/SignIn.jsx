@@ -11,6 +11,7 @@ const SignInForm = () => {
     const [processing, setProcessing] = useState(false)
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user, setUser, loading, setLoading } = useAuth()
+    const [error, setError] = useState('')
 
 
     const onSubmit = async (data) => {
@@ -26,10 +27,12 @@ const SignInForm = () => {
             }
             setLoading(false)
             setProcessing(false)
+            setError("")
         } catch (err) {
             console.error("Sign up error:", err);
             setLoading(false)
             setProcessing(false)
+            setError(err?.response?.data?.message)
         }
     };
 
@@ -39,6 +42,7 @@ const SignInForm = () => {
                 <div className="card-body">
                     <h2 className="text-2xl font-semibold text-center">Sign In to MhFlicks</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        {error && <p className='text-error border-error border p-2 rounded-sm text-center bg-error/10'>{error}</p>}
                         <div className="form-control">
                             <label className="label" htmlFor="email">
                                 <span className="label-text">Email</span>
