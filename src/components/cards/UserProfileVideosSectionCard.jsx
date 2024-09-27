@@ -56,6 +56,10 @@ export default UserProfileVideosSectionCard;
 function DeleteModal({ setShowDeleteModal, videoId, title }) {
     const [deleteText, setDeleteText] = useState("")
 
+    async function deleteVideo() {
+
+    }
+
     return (
         <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50'>
             <div className='max-h-[90vh] max-w-md w-full bg-base-100 p-6 rounded-lg mx-4'>

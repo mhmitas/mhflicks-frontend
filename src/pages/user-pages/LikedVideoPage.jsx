@@ -49,8 +49,8 @@ export default LikedVideoPage;
 const VideoCard = ({ videoData }) => {
     const { channel, video, likes, createdAt } = videoData;
 
-    const timestamps = moment(new Date(video.createdAt), "YYYYMMDD").fromNow();
-
+    const timestamps = moment(new Date(video?.createdAt), "YYYYMMDD").fromNow() || moment(new Date(), "YYYYMMDD").fromNow()
+    console.log(video)
     return (
         <Link to={`/play-video/${video?._id}`}>
             <div className='max-w-4xl mx-auto'>

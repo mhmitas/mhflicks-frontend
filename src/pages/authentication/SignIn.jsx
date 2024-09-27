@@ -60,7 +60,7 @@ const SignInForm = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input
-                                type="text"
+                                type="password"
                                 required
                                 {...register('password')}
                                 className={`input input-bordered bg-base-200`}
