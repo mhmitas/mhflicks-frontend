@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -9,6 +9,7 @@ const SignUp = () => {
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user, setUser, loading, setLoading } = useAuth()
+    const [error, setError] = useState('')
 
     const onSubmit = async (data) => {
         try {
@@ -21,8 +22,10 @@ const SignUp = () => {
                 myAlert("Congratulations! Sign up successfully")
             }
             setLoading(false)
+            setError("")
         } catch (err) {
             console.error("Sign up error:", err);
+            setError(err?.response?.data?.message)
             setLoading(false)
         }
     };
@@ -33,6 +36,7 @@ const SignUp = () => {
                 <div className="card-body w-full">
                     <h2 className="text-2xl font-semibold text-center">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        {error && <p className='text-error'>{error}</p>}
                         <div className="form-control">
                             <label className="label" htmlFor="name">
                                 <span className="label-text">Name</span>

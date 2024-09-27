@@ -67,12 +67,10 @@ const PostCard = ({ post, user, authLoading }) => {
                         </figure>
                         <div className='*:leading-5'>
                             <h1 title={channel?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{channel?.fullName}</h1>
-                            <h1 className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
+                            <h1 className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base leading-3'>
                                 <span>@{channel?.username}</span>▪
                                 <span>{viewsFormat(stats?.subscribers)} subscribers</span>▪
-                                <span className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
-                                    {timestamps}
-                                </span>
+                                <span>{timestamps}</span>
                             </h1>
                         </div>
                     </div></Link>
