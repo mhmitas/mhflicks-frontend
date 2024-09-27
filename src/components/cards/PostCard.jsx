@@ -68,12 +68,12 @@ const PostCard = ({ post, user, authLoading }) => {
                         <div className='*:leading-5'>
                             <h1 title={channel?.fullName} className='text-lg sm:text-xl font-semibold line-clamp-1'>{channel?.fullName}</h1>
                             <h1 className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
-                                <span>{channel?.username}</span>▪
-                                <span>{viewsFormat(stats?.subscribers)} subscribers</span>
+                                <span>@{channel?.username}</span>▪
+                                <span>{viewsFormat(stats?.subscribers)} subscribers</span>▪
+                                <span className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
+                                    {timestamps}
+                                </span>
                             </h1>
-                            <p className='text-color-gray flex flex-wrap gap-1 text-xs sm:text-sm md:text-base font-semibold leading-3'>
-                                {timestamps}
-                            </p>
                         </div>
                     </div></Link>
                     <div className={`space-x-1 ${user?.username === channel?.username && "hidden"}`}>
@@ -86,7 +86,7 @@ const PostCard = ({ post, user, authLoading }) => {
                 </div>
                 {image &&
                     <div onClick={() => setShowModal(true)} className="flex items-center justify-center w-full max-h-[80vh] overflow-hidden rounded-md">
-                        <img className="rounded-md w-auto" src={image?.secure_url} alt="Image" />
+                        <img className="rounded-md w-auto" width={100} height={100} src={image?.secure_url} alt="Image" />
                     </div>
                 }
                 <div className='flex items-center justify-end gap-3 cursor-default'>

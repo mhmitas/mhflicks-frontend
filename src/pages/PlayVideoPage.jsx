@@ -49,7 +49,7 @@ export default PlayVideoPage;
 
 const LoadingSkeleton = () => {
   return (
-    <div className="my-container flex w-full flex-col gap-4">
+    <div className="my-container flex w-full flex-col gap-4 max-w-4xl mx-auto">
       <div className="skeleton bg-base-200 rounded-lg aspect-video w-full"></div>
       <div className="skeleton bg-base-200 h-6 w-1/2"></div>
       <div className="flex items-center gap-4">
