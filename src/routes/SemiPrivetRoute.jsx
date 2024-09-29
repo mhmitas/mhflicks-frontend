@@ -16,14 +16,14 @@ const SemiPrivetRoute = ({ children }) => {
         return children
     }
 
-    return <div className='flex flex-col justify-center items-center text-center min-h-[60vh]'>
-        <div className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-info'><MdInfo /></div>
+    return <div className='flex flex-col justify-center items-center text-center min-h-[60vh] space-y-4'>
+        <div className='text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-primary'><MdInfo /></div>
         <div>
-            <h3 className='text-lg sm:text-xl md:text-2xl font-semibold'>You are not signed in!</h3>
-            <h3 className='text-lg sm:text-xl md:text-2xl font-semibold'>Please sign in to continue</h3>
+            <h3 className='text-2xl sm:text-3xl md:text-4xl font-semibold mb-1'>You are not signed in!</h3>
+            <h3 className='text-xl'>Please sign in to continue</h3>
         </div>
         <Link to="/sign-in">
-            <button className='btn btn-sm md:btn-md rounded-full btn-outline btn-info md:text-lg mt-4'><HiUser />Sign in</button>
+            <button className='btn btn-sm md:btn-md rounded-full btn-outline btn-info md:text-lg'><HiUser />Sign in</button>
         </Link>
     </div>
 };
